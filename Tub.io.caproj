@@ -13,8 +13,10 @@
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Button" version="1">Button</plugin>
+        <plugin author="McKack" id="CSS_import" version="1">CSS import</plugin>
         <plugin author="JP Deblonde" id="DataMatrix" version="1">DataMatrix</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Multiplayer" version="1">Multiplayer</plugin>
         <plugin author="JP Deblonde" id="Pode_QRDecode" version="1">QRDecode</plugin>
@@ -151,8 +153,8 @@
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="508543784361633" speed="5">
                     <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\linebg.png">
-                        <image-point name="Checkbox" x="0.108333" y="0.444444" />
-                        <image-point name="Text" x="0.216667" y="0.244444" />
+                        <image-point name="Checkbox" x="0.0666667" y="0.510638" />
+                        <image-point name="Text" x="0.141667" y="0.276596" />
                         <collision-poly>
                             <point x="0" y="0" />
                             <point x="1" y="0" />
@@ -219,6 +221,12 @@
         <object-type name="func" sid="766954090072408">
             <plugin id="Function" />
         </object-type>
+        <object-type global="1" name="CSSImport" sid="105707220440114">
+            <plugin id="CSS_import" />
+        </object-type>
+        <object-type name="Keyboard" sid="397657264622818">
+            <plugin id="Keyboard" />
+        </object-type>
     </object-folder>
     <families>
         <family name="TEXT" plugin-id="Text" sid="199798342689734">
@@ -247,6 +255,7 @@
             </properties>
         </global-instance>
         <global-instance type="func" uid="26" />
+        <global-instance type="Keyboard" uid="28" />
     </global-instances>
     <sounds-folder />
     <music-folder />
@@ -259,5 +268,6 @@
             <file name="icon-256.png" />
             <file name="loading-logo.png" />
         </file-folder>
+        <file name="style.css" />
     </files-folder>
 </c2project>

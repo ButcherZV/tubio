@@ -57,30 +57,10 @@
                         <action id="-5" name="Set width" sid="303902117742609" type="ListTail">
                             <param id="0" name="Width">ListCtrl.Width</param>
                         </action>
+                        <action id="5" name="Set total lines count" sid="665383654696906" type="ListCtrl">
+                            <param id="0" name="Total lines count">Items.Width</param>
+                        </action>
                     </actions>
-                    <sub-events>
-                        <event-block sid="147564943124176">
-                            <conditions>
-                                <condition id="3" name="For each element" sid="499068683420399" type="Items">
-                                    <param id="0" name="Axes">2</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="2" name="Set at X" sid="280756229266018" type="Items">
-                                    <param id="0" name="X">Items.CurX</param>
-                                    <param id="1" name="Value">&quot;Item&quot; &amp; str( floor( random( 1000 ) ) )</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="678338084842729">
-                            <conditions />
-                            <actions>
-                                <action id="5" name="Set total lines count" sid="665383654696906" type="ListCtrl">
-                                    <param id="0" name="Total lines count">Items.Width</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
@@ -174,14 +154,21 @@
                             <param id="0" name="Layer">&quot;UI&quot;</param>
                             <param id="1" name="Visibility">0</param>
                         </action>
+                        <action id="-4" name="Set layer visible" sid="470375464245593" type="System">
+                            <param id="0" name="Layer">&quot;Cover&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
                     </actions>
                 </event-block>
                 <variable constant="0" name="index" sid="740944321863343" static="0" type="number">0</variable>
                 <variable constant="0" name="remaining" sid="459825645877637" static="0" type="number">0</variable>
                 <variable constant="0" name="code" sid="191418631200414" static="0" type="text"></variable>
-                <event-block sid="287103018983308">
+                <event-block any="1" sid="287103018983308">
                     <conditions>
                         <condition id="0" name="On clicked" sid="589699029898617" type="submitBtn" />
+                        <condition id="0" name="On key pressed" sid="396659047696300" type="Keyboard">
+                            <param id="0" name="Key">13</param>
+                        </condition>
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="538285840741739" type="System">
@@ -223,6 +210,9 @@
                                 <action id="0" name="Set text" sid="989877199654325" type="ytLink">
                                     <param id="0" name="Text">&quot;&quot;</param>
                                 </action>
+                                <action id="5" name="Set total lines count" sid="618568813443108" type="ListCtrl">
+                                    <param id="0" name="Total lines count">Items.Width</param>
+                                </action>
                             </actions>
                         </event-block>
                         <event-block sid="598081200237993">
@@ -241,6 +231,157 @@
         </event-group>
         <event-group description="" sid="813184452036157" title="List">
             <sub-events>
+                <event-group description="" sid="180677723423782" title="Scroll bar">
+                    <sub-events>
+                        <comment>Create a line</comment>
+                        <event-block sid="385298317894301">
+                            <conditions>
+                                <condition id="1" name="On line visible" sid="153066598673755" type="ListCtrl" />
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="724505612378597" type="System">
+                                    <param id="0" name="Object to create">LineBG</param>
+                                    <param id="1" name="Layer">0</param>
+                                    <param id="2" name="X">ListCtrl.LineTLX</param>
+                                    <param id="3" name="Y">ListCtrl.LineTLY</param>
+                                </action>
+                                <action id="-5" name="Set width" sid="495977433316063" type="LineBG">
+                                    <param id="0" name="Width">lerp(LineBG.Width,ListCtrl.Width,0.85)</param>
+                                </action>
+                                <action id="3" name="Pin instance" sid="417380268247622" type="ListCtrl">
+                                    <param id="0" name="Instance">LineBG</param>
+                                </action>
+                                <action id="-4" name="Set position to another object" sid="295664514164817" type="txtIndex">
+                                    <param id="0" name="Object">LineBG</param>
+                                    <param id="1" name="Image point (optional)">&quot;Text&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="281095202642998" type="txtIndex">
+                                    <param id="0" name="Text">ListCtrl.LineIndex &amp; &quot;:&quot; &amp; Items.At( ListCtrl.LineIndex )</param>
+                                </action>
+                                <action id="3" name="Pin instance" sid="628801726341961" type="ListCtrl">
+                                    <param id="0" name="Instance">txtIndex</param>
+                                </action>
+                                <action id="-4" name="Set position to another object" sid="288695264630163" type="Checkbox">
+                                    <param id="0" name="Object">LineBG</param>
+                                    <param id="1" name="Image point (optional)">&quot;Checkbox&quot;</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="861491829554389" type="Checkbox">
+                                    <param id="0" name="Frame number">ListCtrl.At( ListCtrl.LineIndex, &quot;selected&quot;, 0 )</param>
+                                </action>
+                                <action id="3" name="Pin instance" sid="105692386860089" type="ListCtrl">
+                                    <param id="0" name="Instance">Checkbox</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Change property of a line</comment>
+                        <event-block sid="220191122813707">
+                            <conditions>
+                                <condition id="3" name="On touched object" sid="220443458011418" type="TouchWrap">
+                                    <param id="0" name="Object">Checkbox</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="919950536358108" type="Checkbox">
+                                    <param id="0" name="Frame number">(Checkbox.AnimationFrame = 0)? 1:0</param>
+                                </action>
+                                <action id="11" name="Set value" sid="952053962151256" type="ListCtrl">
+                                    <param id="0" name="Line index">ListCtrl.UID2LineIndex( LineBG.UID )</param>
+                                    <param id="1" name="Key">&quot;selected&quot;</param>
+                                    <param id="2" name="Value">Checkbox.AnimationFrame</param>
+                                </action>
+                                <action id="0" name="Call function" sid="390378663515007" type="func">
+                                    <param id="0" name="Name">&quot;GetSelectedItems&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Show properties of current list</comment>
+                        <event-block sid="489554453678318">
+                            <conditions>
+                                <condition id="0" name="On function" sid="571538772197307" type="func">
+                                    <param id="0" name="Name">&quot;GetSelectedItems&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="239533517190511" type="result">
+                                    <param id="0" name="Text">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="779802667948200">
+                                    <conditions>
+                                        <condition id="14" name="For each matched line" sid="898701075176753" type="ListCtrl">
+                                            <param id="0" name="Key">&quot;selected&quot;</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="1" name="Append text" sid="313259708987597" type="result">
+                                            <param id="0" name="Text">ListCtrl.LineIndex &amp; &quot;:&quot; &amp; Items.At( ListCtrl.LineIndex ) &amp; newline</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Drag scroll</comment>
+                        <event-block sid="327484225852203">
+                            <conditions>
+                                <condition behavior="TouchArea" id="3" name="On touch moving" sid="696593985887037" type="ListCtrl" />
+                                <condition id="4" inverted="1" name="Is touching object" sid="349522816804498" type="TouchWrap">
+                                    <param id="0" name="Object">Checkbox</param>
+                                </condition>
+                                <condition behavior="DragDrop" id="0" inverted="1" name="Is dragging" sid="530906194912783" type="ListHeader" />
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Add to" sid="262574340129061" type="ListCtrl">
+                                    <param id="0" name="Value">ListCtrl.TouchArea.DeltaY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Drag list</comment>
+                        <event-block sid="533838109043293">
+                            <conditions>
+                                <condition behavior="DragDrop" id="1" name="On drag start" sid="341369841791476" type="ListHeader" />
+                            </conditions>
+                            <actions>
+                                <action behavior="Pin" id="0" name="Pin to object" sid="945609580596190" type="ListCtrl">
+                                    <param id="0" name="Pin to">ListHeader</param>
+                                    <param id="1" name="Mode">1</param>
+                                </action>
+                                <action behavior="Pin" id="0" name="Pin to object" sid="296546487446420" type="TableBG">
+                                    <param id="0" name="Pin to">ListHeader</param>
+                                    <param id="1" name="Mode">0</param>
+                                </action>
+                                <action behavior="Pin" id="0" name="Pin to object" sid="903482033685659" type="ListTail">
+                                    <param id="0" name="Pin to">ListHeader</param>
+                                    <param id="1" name="Mode">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="560783371869730">
+                            <conditions>
+                                <condition behavior="DragDrop" id="2" name="On drop" sid="107642505669161" type="ListHeader" />
+                            </conditions>
+                            <actions>
+                                <action behavior="Pin" id="1" name="Unpin" sid="573006513360268" type="ListCtrl" />
+                                <action behavior="Pin" id="1" name="Unpin" sid="428535133767734" type="TableBG" />
+                                <action behavior="Pin" id="1" name="Unpin" sid="207699491322329" type="ListTail" />
+                            </actions>
+                        </event-block>
+                        <comment>Scrollbar</comment>
+                        <event-block sid="681031323530253">
+                            <conditions>
+                                <condition behavior="DragDrop" id="0" inverted="1" name="Is dragging" sid="675349514505897" type="ListHeader" />
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <event-block sid="136591919541884">
+                            <conditions />
+                            <actions />
+                        </event-block>
+                    </sub-events>
+                </event-group>
                 <event-block sid="143064004452272">
                     <conditions>
                         <condition id="16" name="On any peer message" sid="343796000376698" type="backend" />
@@ -251,146 +392,6 @@
                             <param id="1" name="Value">backend.Message</param>
                             <param id="2" name="Axis">0</param>
                         </action>
-                    </actions>
-                </event-block>
-            </sub-events>
-        </event-group>
-        <event-group description="" sid="180677723423782" title="ListControl">
-            <sub-events>
-                <comment>Create a line</comment>
-                <event-block sid="385298317894301">
-                    <conditions>
-                        <condition id="1" name="On line visible" sid="153066598673755" type="ListCtrl" />
-                    </conditions>
-                    <actions>
-                        <action id="-3" name="Create object" sid="724505612378597" type="System">
-                            <param id="0" name="Object to create">LineBG</param>
-                            <param id="1" name="Layer">0</param>
-                            <param id="2" name="X">ListCtrl.LineTLX</param>
-                            <param id="3" name="Y">ListCtrl.LineTLY</param>
-                        </action>
-                        <action id="-5" name="Set width" sid="495977433316063" type="LineBG">
-                            <param id="0" name="Width">lerp(LineBG.Width,ListCtrl.Width,0.85)</param>
-                        </action>
-                        <action id="3" name="Pin instance" sid="417380268247622" type="ListCtrl">
-                            <param id="0" name="Instance">LineBG</param>
-                        </action>
-                        <action id="-4" name="Set position to another object" sid="295664514164817" type="txtIndex">
-                            <param id="0" name="Object">LineBG</param>
-                            <param id="1" name="Image point (optional)">&quot;Text&quot;</param>
-                        </action>
-                        <action id="0" name="Set text" sid="281095202642998" type="txtIndex">
-                            <param id="0" name="Text">ListCtrl.LineIndex &amp; &quot;:&quot; &amp; Items.At( ListCtrl.LineIndex )</param>
-                        </action>
-                        <action id="3" name="Pin instance" sid="628801726341961" type="ListCtrl">
-                            <param id="0" name="Instance">txtIndex</param>
-                        </action>
-                        <action id="-4" name="Set position to another object" sid="288695264630163" type="Checkbox">
-                            <param id="0" name="Object">LineBG</param>
-                            <param id="1" name="Image point (optional)">&quot;Checkbox&quot;</param>
-                        </action>
-                        <action id="5" name="Set frame" sid="861491829554389" type="Checkbox">
-                            <param id="0" name="Frame number">ListCtrl.At( ListCtrl.LineIndex, &quot;selected&quot;, 0 )</param>
-                        </action>
-                        <action id="3" name="Pin instance" sid="105692386860089" type="ListCtrl">
-                            <param id="0" name="Instance">Checkbox</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <comment>Change property of a line</comment>
-                <event-block sid="220191122813707">
-                    <conditions>
-                        <condition id="3" name="On touched object" sid="220443458011418" type="TouchWrap">
-                            <param id="0" name="Object">Checkbox</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="5" name="Set frame" sid="919950536358108" type="Checkbox">
-                            <param id="0" name="Frame number">(Checkbox.AnimationFrame = 0)? 1:0</param>
-                        </action>
-                        <action id="11" name="Set value" sid="952053962151256" type="ListCtrl">
-                            <param id="0" name="Line index">ListCtrl.UID2LineIndex( LineBG.UID )</param>
-                            <param id="1" name="Key">&quot;selected&quot;</param>
-                            <param id="2" name="Value">Checkbox.AnimationFrame</param>
-                        </action>
-                        <action id="0" name="Call function" sid="390378663515007" type="func">
-                            <param id="0" name="Name">&quot;GetSelectedItems&quot;</param>
-                            <param id="1" name="Parameter {n}"></param>
-                        </action>
-                    </actions>
-                </event-block>
-                <comment>Show properties of current list</comment>
-                <event-block sid="489554453678318">
-                    <conditions>
-                        <condition id="0" name="On function" sid="571538772197307" type="func">
-                            <param id="0" name="Name">&quot;GetSelectedItems&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Set text" sid="239533517190511" type="result">
-                            <param id="0" name="Text">&quot;&quot;</param>
-                        </action>
-                    </actions>
-                    <sub-events>
-                        <event-block sid="779802667948200">
-                            <conditions>
-                                <condition id="14" name="For each matched line" sid="898701075176753" type="ListCtrl">
-                                    <param id="0" name="Key">&quot;selected&quot;</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">1</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="1" name="Append text" sid="313259708987597" type="result">
-                                    <param id="0" name="Text">ListCtrl.LineIndex &amp; &quot;:&quot; &amp; Items.At( ListCtrl.LineIndex ) &amp; newline</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-                <comment>Drag scroll</comment>
-                <event-block sid="327484225852203">
-                    <conditions>
-                        <condition behavior="TouchArea" id="3" name="On touch moving" sid="696593985887037" type="ListCtrl" />
-                        <condition id="4" inverted="1" name="Is touching object" sid="349522816804498" type="TouchWrap">
-                            <param id="0" name="Object">Checkbox</param>
-                        </condition>
-                        <condition behavior="DragDrop" id="0" inverted="1" name="Is dragging" sid="530906194912783" type="ListHeader" />
-                    </conditions>
-                    <actions>
-                        <action id="2" name="Add to" sid="262574340129061" type="ListCtrl">
-                            <param id="0" name="Value">ListCtrl.TouchArea.DeltaY</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <comment>Drag list</comment>
-                <event-block sid="533838109043293">
-                    <conditions>
-                        <condition behavior="DragDrop" id="1" name="On drag start" sid="341369841791476" type="ListHeader" />
-                    </conditions>
-                    <actions>
-                        <action behavior="Pin" id="0" name="Pin to object" sid="945609580596190" type="ListCtrl">
-                            <param id="0" name="Pin to">ListHeader</param>
-                            <param id="1" name="Mode">1</param>
-                        </action>
-                        <action behavior="Pin" id="0" name="Pin to object" sid="296546487446420" type="TableBG">
-                            <param id="0" name="Pin to">ListHeader</param>
-                            <param id="1" name="Mode">0</param>
-                        </action>
-                        <action behavior="Pin" id="0" name="Pin to object" sid="903482033685659" type="ListTail">
-                            <param id="0" name="Pin to">ListHeader</param>
-                            <param id="1" name="Mode">1</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="560783371869730">
-                    <conditions>
-                        <condition behavior="DragDrop" id="2" name="On drop" sid="107642505669161" type="ListHeader" />
-                    </conditions>
-                    <actions>
-                        <action behavior="Pin" id="1" name="Unpin" sid="573006513360268" type="ListCtrl" />
-                        <action behavior="Pin" id="1" name="Unpin" sid="428535133767734" type="TableBG" />
-                        <action behavior="Pin" id="1" name="Unpin" sid="207699491322329" type="ListTail" />
                     </actions>
                 </event-block>
             </sub-events>

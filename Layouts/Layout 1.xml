@@ -90,7 +90,7 @@
                         <spell-check>No</spell-check>
                         <type>Text</type>
                         <auto-font-size>No</auto-font-size>
-                        <id-optional></id-optional>
+                        <id-optional>linkinput</id-optional>
                     </properties>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -98,8 +98,8 @@
                         <x>81</x>
                         <y>948</y>
                         <z>0</z>
-                        <width>691</width>
-                        <height>54</height>
+                        <width>652</width>
+                        <height>45</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -119,11 +119,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>789</x>
+                        <x>760</x>
                         <y>948</y>
                         <z>0</z>
                         <width>162</width>
-                        <height>54</height>
+                        <height>41</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -176,11 +176,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>2081</x>
-                        <y>175</y>
+                        <x>1977</x>
+                        <y>213</y>
                         <z>0</z>
                         <width>403</width>
-                        <height>600</height>
+                        <height>620</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -202,7 +202,7 @@
                         <y>1195</y>
                         <z>0</z>
                         <width>120</width>
-                        <height>45</height>
+                        <height>47</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -239,7 +239,7 @@
                     <properties>
                         <text>Text</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-18.4,400,0</font>
+                        <font>Arial,-21.6,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Left</horizontal-alignment>
                         <vertical-alignment>Top</vertical-alignment>
@@ -251,10 +251,10 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>1240</x>
-                        <y>1153</y>
+                        <y>1147</y>
                         <z>0</z>
-                        <width>200</width>
-                        <height>30</height>
+                        <width>221</width>
+                        <height>36</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -501,7 +501,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>1400</x>
-                        <y>240</y>
+                        <y>260</y>
                         <z>0</z>
                         <width>150</width>
                         <height>50</height>
@@ -552,9 +552,14 @@
         </instance>
         <instance type="Items" uid="15">
             <properties>
-                <width>30</width>
+                <width>0</width>
                 <height>1</height>
                 <depth>1</depth>
+            </properties>
+        </instance>
+        <instance type="CSSImport" uid="27">
+            <properties>
+                <css-filename>style.css</css-filename>
             </properties>
         </instance>
     </nonworld-instances>
