@@ -313,14 +313,22 @@
                                 <action id="3" name="Pin instance" sid="105692386860089" type="ListCtrl">
                                     <param id="0" name="Instance">Checkbox</param>
                                 </action>
+                                <action id="-4" name="Set position to another object" sid="795876765944802" type="thumb">
+                                    <param id="0" name="Object">LineBG</param>
+                                    <param id="1" name="Image point (optional)">&quot;thumb&quot;</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="418055666918457" type="thumb">
+                                    <param id="0" name="Frame number">ListCtrl.At( ListCtrl.LineIndex, &quot;frame&quot;, 0 )</param>
+                                </action>
                                 <action id="10" name="Load image from URL" sid="959678546799580" type="thumb">
                                     <param id="0" name="URI">Items.At(ListCtrl.LineIndex,2)</param>
                                     <param id="1" name="Size">0</param>
                                     <param id="2" name="Cross-origin">1</param>
                                 </action>
-                                <action id="-4" name="Set position to another object" sid="795876765944802" type="thumb">
-                                    <param id="0" name="Object">LineBG</param>
-                                    <param id="1" name="Image point (optional)">&quot;thumb&quot;</param>
+                                <action id="11" name="Set value" sid="921199861803983" type="ListCtrl">
+                                    <param id="0" name="Line index">ListCtrl.UID2LineIndex( LineBG.UID )</param>
+                                    <param id="1" name="Key">&quot;frame&quot;</param>
+                                    <param id="2" name="Value">thumb.AnimationFrame</param>
                                 </action>
                                 <action id="3" name="Pin instance" sid="555934933752012" type="ListCtrl">
                                     <param id="0" name="Instance">thumb</param>
