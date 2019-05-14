@@ -294,5 +294,6 @@
             <file name="loading-logo.png" />
         </file-folder>
         <file name="style.css" />
+        <file name="key.txt" />
     </files-folder>
 </c2project>
