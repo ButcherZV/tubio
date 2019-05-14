@@ -64,6 +64,23 @@
                             <param id="0" name="Text">&quot;Connecting to server... &quot;</param>
                         </action>
                         <action id="9" name="Scroll to bottom" sid="647789509503225" type="statusLog" />
+                        <action id="1" name="Request project file" sid="247218558612945" type="AJAX">
+                            <param id="0" name="Tag">&quot;apikey&quot;</param>
+                            <param id="1" name="File">key.txt</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="565411269516017">
+                    <conditions>
+                        <condition id="0" name="On completed" sid="339343258963003" type="AJAX">
+                            <param id="0" name="Tag">&quot;apikey&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="664761356226098" type="System">
+                            <param id="0" name="Variable">apikey</param>
+                            <param id="1" name="Value">AJAX.LastData</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>
@@ -296,6 +313,18 @@
                                 <action id="3" name="Pin instance" sid="105692386860089" type="ListCtrl">
                                     <param id="0" name="Instance">Checkbox</param>
                                 </action>
+                                <action id="10" name="Load image from URL" sid="959678546799580" type="thumb">
+                                    <param id="0" name="URI">Items.At(ListCtrl.LineIndex,2)</param>
+                                    <param id="1" name="Size">0</param>
+                                    <param id="2" name="Cross-origin">1</param>
+                                </action>
+                                <action id="-4" name="Set position to another object" sid="795876765944802" type="thumb">
+                                    <param id="0" name="Object">LineBG</param>
+                                    <param id="1" name="Image point (optional)">&quot;thumb&quot;</param>
+                                </action>
+                                <action id="3" name="Pin instance" sid="555934933752012" type="ListCtrl">
+                                    <param id="0" name="Instance">thumb</param>
+                                </action>
                             </actions>
                         </event-block>
                         <comment>Change property of a line</comment>
@@ -432,7 +461,7 @@
                     <actions>
                         <action id="0" name="Request URL" sid="714553218788005" type="AJAX">
                             <param id="0" name="Tag">&quot;getInfo&quot;</param>
-                            <param id="1" name="URL">&quot;https://www.googleapis.com/youtube/v3/videos?id=&quot; &amp; func.Param(0) &amp; &quot;&amp;key=AIzaSyAveY-XSr8gnsugQbzSWhPkrEaiY_sNcE8&amp;fields=items(id,snippet(title,thumbnails))&amp;part=snippet&quot;</param>
+                            <param id="1" name="URL">&quot;https://www.googleapis.com/youtube/v3/videos?id=&quot; &amp; func.Param(0) &amp; &quot;&amp;key=&quot; &amp; apikey &amp;&quot;&amp;fields=items(id,snippet(title,thumbnails))&amp;part=snippet&quot;</param>
                         </action>
                     </actions>
                 </event-block>
