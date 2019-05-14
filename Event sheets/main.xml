@@ -60,6 +60,10 @@
                         <action id="5" name="Set total lines count" sid="665383654696906" type="ListCtrl">
                             <param id="0" name="Total lines count">Items.Width</param>
                         </action>
+                        <action id="0" name="Set text" sid="309056377448120" type="statusLog">
+                            <param id="0" name="Text">&quot;Connecting to server... &quot;</param>
+                        </action>
+                        <action id="9" name="Scroll to bottom" sid="647789509503225" type="statusLog" />
                     </actions>
                 </event-block>
             </sub-events>
@@ -114,8 +118,23 @@
                     </conditions>
                     <actions>
                         <action id="4" name="Log in" sid="504319641167593" type="backend">
-                            <param id="0" name="Alias">str(random(0,10) &amp; random(0,10) &amp; random(0,10) &amp; random(0,10) &amp; random(0,10) &amp; random(0,10))</param>
+                            <param id="0" name="Alias">nickname</param>
                         </action>
+                        <action id="0" name="Set text" sid="341321952065302" type="statusLog">
+                            <param id="0" name="Text">statusLog.Text &amp; &quot; completed!&quot; &amp; newline &amp;  &quot;Logging in as &quot; &amp; nickname &amp; &quot;...&quot;</param>
+                        </action>
+                        <action id="9" name="Scroll to bottom" sid="188979223837052" type="statusLog" />
+                    </actions>
+                </event-block>
+                <event-block sid="937669575586195">
+                    <conditions>
+                        <condition id="1" name="On error" sid="329299418195972" type="backend" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="880054399389476" type="statusLog">
+                            <param id="0" name="Text">statusLog.Text &amp; &quot; error!&quot; &amp; newline &amp; &quot;Could not connecto to server!&quot;</param>
+                        </action>
+                        <action id="9" name="Scroll to bottom" sid="143697195483008" type="statusLog" />
                     </actions>
                 </event-block>
                 <event-block sid="914290274514906">
@@ -129,13 +148,22 @@
                             <param id="2" name="Room">sessionID</param>
                             <param id="3" name="Max peers">0</param>
                         </action>
+                        <action id="0" name="Set text" sid="572161089144865" type="statusLog">
+                            <param id="0" name="Text">statusLog.Text &amp; &quot; completed!&quot; &amp; newline &amp;&quot;Joining session... &quot;</param>
+                        </action>
+                        <action id="9" name="Scroll to bottom" sid="728817791148503" type="statusLog" />
                     </actions>
                 </event-block>
                 <event-block sid="838609835972924">
                     <conditions>
                         <condition id="5" name="On joined room" sid="154817003134037" type="backend" />
                     </conditions>
-                    <actions />
+                    <actions>
+                        <action id="0" name="Set text" sid="756203381729628" type="statusLog">
+                            <param id="0" name="Text">statusLog.Text &amp; &quot;completed!&quot; &amp; newline &amp; &quot;All systems operational!&quot;</param>
+                        </action>
+                        <action id="9" name="Scroll to bottom" sid="541836394835567" type="statusLog" />
+                    </actions>
                 </event-block>
             </sub-events>
         </event-group>
@@ -183,9 +211,6 @@
                             <param id="0" name="Variable">code</param>
                             <param id="1" name="Value">right(ytLink.Text,remaining)</param>
                         </action>
-                        <action id="0" name="Set text" sid="514182042438203" type="Text2">
-                            <param id="0" name="Text">&quot;Index: &quot; &amp; index &amp; &quot;; Remaining: &quot; &amp; remaining &amp; &quot;; GENERATED: &quot; &amp; code</param>
-                        </action>
                     </actions>
                     <sub-events>
                         <event-block any="1" sid="178243868898431">
@@ -202,16 +227,12 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="5" name="Push" sid="312201363407785" type="Items">
-                                    <param id="0" name="Where">0</param>
-                                    <param id="1" name="Value">code</param>
-                                    <param id="2" name="Axis">0</param>
-                                </action>
                                 <action id="0" name="Set text" sid="989877199654325" type="ytLink">
                                     <param id="0" name="Text">&quot;&quot;</param>
                                 </action>
-                                <action id="5" name="Set total lines count" sid="618568813443108" type="ListCtrl">
-                                    <param id="0" name="Total lines count">Items.Width</param>
+                                <action id="0" name="Call function" sid="440887229315174" type="func">
+                                    <param id="0" name="Name">&quot;addTrack&quot;</param>
+                                    <param id="1" name="Parameter {n}">code</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -246,20 +267,24 @@
                                     <param id="3" name="Y">ListCtrl.LineTLY</param>
                                 </action>
                                 <action id="-5" name="Set width" sid="495977433316063" type="LineBG">
-                                    <param id="0" name="Width">lerp(LineBG.Width,ListCtrl.Width,0.85)</param>
+                                    <param id="0" name="Width">lerp(LineBG.Width,ListCtrl.Width,1)</param>
                                 </action>
                                 <action id="3" name="Pin instance" sid="417380268247622" type="ListCtrl">
                                     <param id="0" name="Instance">LineBG</param>
                                 </action>
-                                <action id="-4" name="Set position to another object" sid="295664514164817" type="txtIndex">
+                                <action id="-4" name="Set position to another object" sid="295664514164817" type="listItem">
                                     <param id="0" name="Object">LineBG</param>
                                     <param id="1" name="Image point (optional)">&quot;Text&quot;</param>
                                 </action>
-                                <action id="0" name="Set text" sid="281095202642998" type="txtIndex">
-                                    <param id="0" name="Text">ListCtrl.LineIndex &amp; &quot;:&quot; &amp; Items.At( ListCtrl.LineIndex )</param>
+                                <action id="0" name="Set text" sid="281095202642998" type="listItem">
+                                    <param id="0" name="Text">ListCtrl.LineIndex +1 &amp; &quot;. &quot; &amp; Items.At(ListCtrl.LineIndex, 1)</param>
+                                </action>
+                                <action id="5" name="Set web font" sid="200824059328889" type="listItem">
+                                    <param id="0" name="Family name">&quot;Quicksand&quot;</param>
+                                    <param id="1" name="CSS URL">&quot;https://fonts.googleapis.com/css?family=Quicksand&quot;</param>
                                 </action>
                                 <action id="3" name="Pin instance" sid="628801726341961" type="ListCtrl">
-                                    <param id="0" name="Instance">txtIndex</param>
+                                    <param id="0" name="Instance">listItem</param>
                                 </action>
                                 <action id="-4" name="Set position to another object" sid="288695264630163" type="Checkbox">
                                     <param id="0" name="Object">LineBG</param>
@@ -392,6 +417,59 @@
                             <param id="1" name="Value">backend.Message</param>
                             <param id="2" name="Axis">0</param>
                         </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="158495084137460" title="Add track">
+            <sub-events>
+                <event-block sid="743139618110159">
+                    <conditions>
+                        <condition id="0" name="On function" sid="450294693653393" type="func">
+                            <param id="0" name="Name">&quot;addTrack&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Request URL" sid="714553218788005" type="AJAX">
+                            <param id="0" name="Tag">&quot;getInfo&quot;</param>
+                            <param id="1" name="URL">&quot;https://www.googleapis.com/youtube/v3/videos?id=&quot; &amp; func.Param(0) &amp; &quot;&amp;key=AIzaSyAveY-XSr8gnsugQbzSWhPkrEaiY_sNcE8&amp;fields=items(id,snippet(title,thumbnails))&amp;part=snippet&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="278342241729532">
+                    <conditions>
+                        <condition id="0" name="On completed" sid="697107978880526" type="AJAX">
+                            <param id="0" name="Tag">&quot;getInfo&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="60" name="LoadJSON" sid="604083381675023" type="JSON">
+                            <param id="0" name="JSON">AJAX.LastData</param>
+                            <param id="1" name="Reference point">0</param>
+                            <param id="2" name="Key {n}"></param>
+                        </action>
+                        <action id="5" name="Push" sid="323615897908081" type="Items">
+                            <param id="0" name="Where">0</param>
+                            <param id="1" name="Value">JSON.Value(0, &quot;items&quot;, 0, &quot;id&quot;)</param>
+                            <param id="2" name="Axis">0</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="654605167365834" type="Items">
+                            <param id="0" name="X">Items.Width-1</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">JSON.Value(0, &quot;items&quot;, 0, &quot;snippet&quot;, &quot;title&quot;)</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="766016680953559" type="Items">
+                            <param id="0" name="X">Items.Width-1</param>
+                            <param id="1" name="Y">2</param>
+                            <param id="2" name="Value">JSON.Value(0, &quot;items&quot;, 0, &quot;snippet&quot;, &quot;thumbnails&quot;, &quot;default&quot;, &quot;url&quot;)</param>
+                        </action>
+                        <action id="5" name="Set total lines count" sid="618568813443108" type="ListCtrl">
+                            <param id="0" name="Total lines count">Items.Width</param>
+                        </action>
+                        <action id="0" name="Set text" sid="895606406954042" type="statusLog">
+                            <param id="0" name="Text">statusLog.Text &amp; newline &amp; nickname &amp; &quot; just queued &quot; &amp; Items.At(Items.Width-1,1) &amp; &quot; into the playlist.&quot;</param>
+                        </action>
+                        <action id="9" name="Scroll to bottom" sid="353783394257580" type="statusLog" />
                     </actions>
                 </event-block>
             </sub-events>

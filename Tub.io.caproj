@@ -10,12 +10,14 @@
     <unique-id>2m2oqhlgof90t</unique-id>
     <saved-with-version>26500</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Button" version="1">Button</plugin>
         <plugin author="McKack" id="CSS_import" version="1">CSS import</plugin>
         <plugin author="JP Deblonde" id="DataMatrix" version="1">DataMatrix</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Yann Granjon" id="JSON" version="1">JSON</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Multiplayer" version="1">Multiplayer</plugin>
@@ -59,63 +61,182 @@
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
     <object-folder>
-        <object-type name="DataMatrix" sid="857079535472949">
-            <plugin id="DataMatrix" />
-        </object-type>
-        <object-type name="IDgen" sid="433107608660508">
-            <plugin id="UUID" />
-        </object-type>
-        <object-type name="qrCodeTxt" sid="945354144244284">
-            <plugin id="Text" />
-        </object-type>
-        <object-type global="1" name="QRDecode" sid="646804217600576">
-            <plugin id="Pode_QRDecode" />
-            <instance-variables>
-                <instance-variable name="scanned" sid="717501825302926" type="boolean" />
-            </instance-variables>
-        </object-type>
-        <object-type name="debug" sid="579042674534830">
-            <plugin id="Text" />
-        </object-type>
-        <object-type name="tempCode" sid="475144550534692">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="632854603129783" speed="5">
-                    <frame duration="1" hotspotX="0" hotspotY="0" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="Mouse" sid="937222488875194">
-            <plugin id="Mouse" />
-        </object-type>
-        <object-type name="UserMedia" sid="636506394664013">
-            <plugin id="UserMedia" />
-        </object-type>
-        <object-type name="txtInfo" sid="834290666940623">
-            <plugin id="Text" />
-        </object-type>
+        <object-folder name="Text">
+            <object-type name="debug" sid="579042674534830">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="qrCodeTxt" sid="945354144244284">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="Text2" sid="642137832276149">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="result" sid="287297284456233">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="listItem" sid="734723434025788">
+                <plugin id="Text" />
+                <container>
+                    <type>LineBG</type>
+                    <type>listItem</type>
+                    <type>Checkbox</type>
+                </container>
+            </object-type>
+            <object-type name="txtInfo" sid="834290666940623">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="ytLink" sid="196916325940184">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="ytLink2" sid="119731944551087">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="statusLog" sid="767880930929307">
+                <plugin id="TextBox" />
+            </object-type>
+        </object-folder>
+        <object-folder name="Plugins">
+            <object-type name="AJAX" sid="962315594344439">
+                <plugin id="AJAX" />
+            </object-type>
+            <object-type name="Browser" sid="461764974300522">
+                <plugin id="Browser" />
+            </object-type>
+            <object-type global="1" name="CSSImport" sid="105707220440114">
+                <plugin id="CSS_import" />
+            </object-type>
+            <object-type name="DataMatrix" sid="857079535472949">
+                <plugin id="DataMatrix" />
+            </object-type>
+            <object-type name="IDgen" sid="433107608660508">
+                <plugin id="UUID" />
+            </object-type>
+            <object-type global="1" name="JSON" sid="742690546522181">
+                <plugin id="JSON" />
+            </object-type>
+            <object-type name="Keyboard" sid="397657264622818">
+                <plugin id="Keyboard" />
+            </object-type>
+            <object-type name="Mouse" sid="937222488875194">
+                <plugin id="Mouse" />
+            </object-type>
+            <object-type name="TouchWrap" sid="390736841459599">
+                <plugin id="rex_TouchWrap" />
+            </object-type>
+            <object-type name="UserMedia" sid="636506394664013">
+                <plugin id="UserMedia" />
+            </object-type>
+            <object-type name="ytPlayer" sid="600704926995385">
+                <plugin id="rex_youtube_player" />
+            </object-type>
+            <object-type global="1" name="QRDecode" sid="646804217600576">
+                <plugin id="Pode_QRDecode" />
+                <instance-variables>
+                    <instance-variable name="scanned" sid="717501825302926" type="boolean" />
+                </instance-variables>
+            </object-type>
+            <object-type name="ListCtrl" sid="974928987242719">
+                <plugin id="Rex_ListCtrl" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="170037336336978">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                    <behavior-type name="TouchArea" sid="268269443376928">
+                        <behavior id="Rex_TouchArea2" />
+                    </behavior-type>
+                </behaviors>
+            </object-type>
+        </object-folder>
+        <object-folder name="Graphics">
+            <object-type name="Checkbox" sid="185908241529137">
+                <plugin id="Sprite" />
+                <container>
+                    <type>LineBG</type>
+                    <type>listItem</type>
+                    <type>Checkbox</type>
+                </container>
+                <animation-folder>
+                    <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="381547522654361" speed="0">
+                        <frame duration="1" hotspotX="0.52" hotspotY="0.52" original-source="C:\Users\Miroslav\Desktop\app\1.png" />
+                        <frame duration="1" hotspotX="0.52" hotspotY="0.52" original-source="C:\Users\Miroslav\Desktop\app\0.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="LineBG" sid="824510202931811">
+                <plugin id="Sprite" />
+                <container>
+                    <type>LineBG</type>
+                    <type>listItem</type>
+                    <type>Checkbox</type>
+                </container>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="508543784361633" speed="5">
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\linebg.png">
+                            <image-point name="Checkbox" x="0.0666667" y="0.510949" />
+                            <image-point name="Text" x="0.333333" y="0.277372" />
+                            <collision-poly>
+                                <point x="0" y="0" />
+                                <point x="1" y="0" />
+                                <point x="0.983333" y="0.933333" />
+                                <point x="0.0166667" y="0.933333" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="ListHeader" sid="172434231124174">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="DragDrop" sid="848687945343152">
+                        <behavior id="DragnDrop" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="830582573751314" speed="5">
+                        <frame duration="1" hotspotX="0" hotspotY="1" original-source="C:\Users\Miroslav\Desktop\app\ListHeader.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="ListTail" sid="169590152130615">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="542236813216743">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="929137156501869" speed="5">
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\ListTail.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="tempCode" sid="475144550534692">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="632854603129783" speed="5">
+                        <frame duration="1" hotspotX="0" hotspotY="0" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="TableBG" sid="423339272535005">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="850931637972670">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="182988606803389" speed="5">
+                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\TableBG.png" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
         <object-type name="backend" sid="377700514597759">
             <plugin id="Multiplayer" />
         </object-type>
-        <object-type name="ytPlayer" sid="600704926995385">
-            <plugin id="rex_youtube_player" />
-        </object-type>
         <object-type name="qrBtn" sid="574450072825637">
             <plugin id="Button" />
-        </object-type>
-        <object-type name="ListCtrl" sid="974928987242719">
-            <plugin id="Rex_ListCtrl" />
-            <behaviors>
-                <behavior-type name="Pin" sid="170037336336978">
-                    <behavior id="Pin" />
-                </behavior-type>
-                <behavior-type name="TouchArea" sid="268269443376928">
-                    <behavior id="Rex_TouchArea2" />
-                </behavior-type>
-            </behaviors>
-        </object-type>
-        <object-type name="ytLink" sid="196916325940184">
-            <plugin id="TextBox" />
         </object-type>
         <object-type name="submitBtn" sid="247152911443789">
             <plugin id="Button" />
@@ -123,115 +244,18 @@
         <object-type global="1" name="Items" sid="435301481916131">
             <plugin id="Arr" />
         </object-type>
-        <object-type name="Text2" sid="642137832276149">
-            <plugin id="Text" />
-        </object-type>
-        <object-type name="Browser" sid="461764974300522">
-            <plugin id="Browser" />
-        </object-type>
-        <object-type name="Checkbox" sid="185908241529137">
-            <plugin id="Sprite" />
-            <container>
-                <type>LineBG</type>
-                <type>txtIndex</type>
-                <type>Checkbox</type>
-            </container>
-            <animation-folder>
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="381547522654361" speed="0">
-                    <frame duration="1" hotspotX="0.52" hotspotY="0.52" original-source="C:\Users\Miroslav\Desktop\app\1.png" />
-                    <frame duration="1" hotspotX="0.52" hotspotY="0.52" original-source="C:\Users\Miroslav\Desktop\app\0.png" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="LineBG" sid="824510202931811">
-            <plugin id="Sprite" />
-            <container>
-                <type>LineBG</type>
-                <type>txtIndex</type>
-                <type>Checkbox</type>
-            </container>
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="508543784361633" speed="5">
-                    <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\linebg.png">
-                        <image-point name="Checkbox" x="0.0666667" y="0.510638" />
-                        <image-point name="Text" x="0.141667" y="0.276596" />
-                        <collision-poly>
-                            <point x="0" y="0" />
-                            <point x="1" y="0" />
-                            <point x="0.983333" y="0.933333" />
-                            <point x="0.0166667" y="0.933333" />
-                        </collision-poly>
-                    </frame>
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="ListHeader" sid="172434231124174">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="DragDrop" sid="848687945343152">
-                    <behavior id="DragnDrop" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="830582573751314" speed="5">
-                    <frame duration="1" hotspotX="0" hotspotY="1" original-source="C:\Users\Miroslav\Desktop\app\ListHeader.png" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="ListTail" sid="169590152130615">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Pin" sid="542236813216743">
-                    <behavior id="Pin" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="929137156501869" speed="5">
-                    <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\ListTail.png" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="TableBG" sid="423339272535005">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Pin" sid="850931637972670">
-                    <behavior id="Pin" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="182988606803389" speed="5">
-                    <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\TableBG.png" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="txtIndex" sid="734723434025788">
-            <plugin id="Text" />
-            <container>
-                <type>LineBG</type>
-                <type>txtIndex</type>
-                <type>Checkbox</type>
-            </container>
-        </object-type>
-        <object-type name="result" sid="287297284456233">
-            <plugin id="Text" />
-        </object-type>
-        <object-type name="TouchWrap" sid="390736841459599">
-            <plugin id="rex_TouchWrap" />
-        </object-type>
         <object-type name="func" sid="766954090072408">
             <plugin id="Function" />
-        </object-type>
-        <object-type global="1" name="CSSImport" sid="105707220440114">
-            <plugin id="CSS_import" />
-        </object-type>
-        <object-type name="Keyboard" sid="397657264622818">
-            <plugin id="Keyboard" />
         </object-type>
     </object-folder>
     <families>
         <family name="TEXT" plugin-id="Text" sid="199798342689734">
             <members>
+                <member>debug</member>
+                <member>listItem</member>
                 <member>qrCodeTxt</member>
+                <member>result</member>
+                <member>Text2</member>
                 <member>txtInfo</member>
             </members>
         </family>
@@ -256,6 +280,7 @@
         </global-instance>
         <global-instance type="func" uid="26" />
         <global-instance type="Keyboard" uid="28" />
+        <global-instance type="AJAX" uid="16" />
     </global-instances>
     <sounds-folder />
     <music-folder />
