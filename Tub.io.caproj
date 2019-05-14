@@ -19,6 +19,7 @@
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Yann Granjon" id="JSON" version="1">JSON</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="List" version="1">List</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Multiplayer" version="1">Multiplayer</plugin>
         <plugin author="JP Deblonde" id="Pode_QRDecode" version="1">QRDecode</plugin>
@@ -95,6 +96,9 @@
             <object-type name="statusLog" sid="767880930929307">
                 <plugin id="TextBox" />
             </object-type>
+            <object-type name="clientList" sid="670930539887639">
+                <plugin id="List" />
+            </object-type>
         </object-folder>
         <object-folder name="Plugins">
             <object-type name="AJAX" sid="962315594344439">
@@ -151,6 +155,9 @@
         <object-folder name="Graphics">
             <object-type name="Checkbox" sid="185908241529137">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="id" sid="662494127948823" type="number" />
+                </instance-variables>
                 <container>
                     <type>LineBG</type>
                     <type>listItem</type>
@@ -158,9 +165,10 @@
                     <type>thumb</type>
                 </container>
                 <animation-folder>
-                    <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="381547522654361" speed="0">
+                    <animation framecount="3" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="381547522654361" speed="0">
                         <frame duration="1" hotspotX="0.52" hotspotY="0.52" original-source="C:\Users\Miroslav\Desktop\app\1.png" />
                         <frame duration="1" hotspotX="0.52" hotspotY="0.52" original-source="C:\Users\Miroslav\Desktop\app\0.png" />
+                        <frame duration="1" hotspotX="0.52" hotspotY="0.52" />
                     </animation>
                 </animation-folder>
             </object-type>
@@ -175,9 +183,9 @@
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="508543784361633" speed="5">
                         <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\linebg.png">
-                            <image-point name="Checkbox" x="0.05" y="0.509091" />
-                            <image-point name="Text" x="0.333333" y="0.281818" />
-                            <image-point name="thumb" x="0.2" y="0.509091" />
+                            <image-point name="Checkbox" x="0.05" y="0.510949" />
+                            <image-point name="Text" x="0.341667" y="0.182482" />
+                            <image-point name="thumb" x="0.208333" y="0.49635" />
                             <collision-poly>
                                 <point x="0" y="0" />
                                 <point x="1" y="0" />
@@ -197,7 +205,9 @@
                 </behaviors>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="830582573751314" speed="5">
-                        <frame duration="1" hotspotX="0" hotspotY="1" original-source="C:\Users\Miroslav\Desktop\app\ListHeader.png" />
+                        <frame duration="1" hotspotX="0" hotspotY="1" original-source="C:\Users\Miroslav\Desktop\app\ListHeader.png">
+                            <image-point name="cover" x="0" y="0" />
+                        </frame>
                     </animation>
                 </animation-folder>
             </object-type>
@@ -235,16 +245,11 @@
                     </animation>
                 </animation-folder>
             </object-type>
-            <object-type name="thumb" sid="186124290046614">
+            <object-type name="thumb" sid="653451601893915">
                 <plugin id="Sprite" />
                 <instance-variables>
-                    <instance-variable name="id" sid="933895329770252" type="number" />
+                    <instance-variable name="id" sid="796084337489832" type="number" />
                 </instance-variables>
-                <behaviors>
-                    <behavior-type name="Pin" sid="794357412100631">
-                        <behavior id="Pin" />
-                    </behavior-type>
-                </behaviors>
                 <container>
                     <type>LineBG</type>
                     <type>listItem</type>
@@ -252,7 +257,7 @@
                     <type>thumb</type>
                 </container>
                 <animation-folder>
-                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="999214104889018" speed="0">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="541510377508139" speed="5">
                         <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                     </animation>
                 </animation-folder>
@@ -273,6 +278,9 @@
         <object-type name="func" sid="766954090072408">
             <plugin id="Function" />
         </object-type>
+        <object-type name="backBtn" sid="704069023758772">
+            <plugin id="Button" />
+        </object-type>
     </object-folder>
     <families>
         <family name="TEXT" plugin-id="Text" sid="199798342689734">
@@ -287,7 +295,7 @@
         </family>
     </families>
     <layout-folder>
-        <layout>Layout 1.xml</layout>
+        <layout>MainScreen.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>main.xml</event-sheet>
