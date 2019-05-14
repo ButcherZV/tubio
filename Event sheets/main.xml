@@ -64,6 +64,23 @@
                             <param id="0" name="Text">&quot;Connecting to server... &quot;</param>
                         </action>
                         <action id="9" name="Scroll to bottom" sid="647789509503225" type="statusLog" />
+                        <action id="1" name="Request project file" sid="586145416883350" type="AJAX">
+                            <param id="0" name="Tag">&quot;api&quot;</param>
+                            <param id="1" name="File">key.txt</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="338002433972334">
+                    <conditions>
+                        <condition id="0" name="On completed" sid="747904783597454" type="AJAX">
+                            <param id="0" name="Tag">&quot;api&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="565020829902033" type="System">
+                            <param id="0" name="Variable">apikey</param>
+                            <param id="1" name="Value">AJAX.LastData</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>
@@ -432,7 +449,7 @@
                     <actions>
                         <action id="0" name="Request URL" sid="714553218788005" type="AJAX">
                             <param id="0" name="Tag">&quot;getInfo&quot;</param>
-                            <param id="1" name="URL">&quot;https://www.googleapis.com/youtube/v3/videos?id=&quot; &amp; func.Param(0) &amp; &quot;&amp;key=AIzaSyAveY-XSr8gnsugQbzSWhPkrEaiY_sNcE8&amp;fields=items(id,snippet(title,thumbnails))&amp;part=snippet&quot;</param>
+                            <param id="1" name="URL">&quot;https://www.googleapis.com/youtube/v3/videos?id=&quot; &amp; func.Param(0) &amp; &quot;&amp;key=&quot;&amp; apikey &amp;&quot;&amp;fields=items(id,snippet(title,thumbnails))&amp;part=snippet&quot;</param>
                         </action>
                     </actions>
                 </event-block>

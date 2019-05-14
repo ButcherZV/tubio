@@ -3,7 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>variables</name>
     <events>
-        <variable constant="0" name="nickname" sid="891118992787240" static="0" type="text">djAPE</variable>
-        <variable constant="0" name="sessionID" sid="573950865029178" static="0" type="number">0</variable>
+        <variable comment="API Key of YouTube" constant="0" name="apikey" sid="895368739357353" static="0" type="text"></variable>
+        <variable comment="Host nickname" constant="0" name="nickname" sid="891118992787240" static="0" type="text">djAPE</variable>
+        <variable comment="ID number of current session" constant="0" name="sessionID" sid="573950865029178" static="0" type="number">0</variable>
     </events>
 </c2eventsheet>
