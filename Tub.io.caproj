@@ -27,6 +27,7 @@
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Dominic Businaro" id="UUID" version="1">UUID</plugin>
         <plugin author="Scirra" id="UserMedia" version="1">User Media</plugin>
         <plugin author="Rex.Rainbow" id="rex_TouchWrap" version="0.100000001">Touch wrap</plugin>
@@ -280,6 +281,10 @@
         </object-type>
         <object-type name="backBtn" sid="704069023758772">
             <plugin id="Button" />
+        </object-type>
+        <object-type name="TiledBackground" sid="652924072542210">
+            <plugin id="TiledBg" />
+            <texture />
         </object-type>
     </object-folder>
     <families>
