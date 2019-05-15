@@ -384,28 +384,22 @@
                                 <action id="5" name="Set frame" sid="861491829554389" type="Checkbox">
                                     <param id="0" name="Frame number">ListCtrl.At( ListCtrl.LineIndex, &quot;selected&quot;, 0 )</param>
                                 </action>
-                                <action id="-10" name="Set value" sid="658378679397193" type="Checkbox">
+                                <action id="-10" name="Set value" sid="370256207235119" type="Checkbox">
                                     <param id="0" name="Instance variable">id</param>
                                     <param id="1" name="Value">ListCtrl.LineIndex</param>
                                 </action>
                                 <action id="3" name="Pin instance" sid="105692386860089" type="ListCtrl">
                                     <param id="0" name="Instance">Checkbox</param>
                                 </action>
-                                <action id="-4" name="Set position to another object" sid="320549393697756" type="thumb">
+                                <action id="-4" name="Set position to another object" sid="109093008491956" type="thumbImage">
                                     <param id="0" name="Object">LineBG</param>
                                     <param id="1" name="Image point (optional)">&quot;thumb&quot;</param>
                                 </action>
-                                <action id="10" name="Load image from URL" sid="733531547195668" type="thumb">
-                                    <param id="0" name="URI">Items.At(ListCtrl.LineIndex, 2)</param>
-                                    <param id="1" name="Size">0</param>
-                                    <param id="2" name="Cross-origin">1</param>
+                                <action id="0" name="Set image URL" sid="386936280168902" type="thumbImage">
+                                    <param id="0" name="HTML">Items.At(ListCtrl.LineIndex, 2)</param>
                                 </action>
-                                <action id="-10" name="Set value" sid="494215275032931" type="thumb">
-                                    <param id="0" name="Instance variable">id</param>
-                                    <param id="1" name="Value">ListCtrl.LineIndex</param>
-                                </action>
-                                <action id="3" name="Pin instance" sid="188482308982868" type="ListCtrl">
-                                    <param id="0" name="Instance">thumb</param>
+                                <action id="3" name="Pin instance" sid="751046960438140" type="ListCtrl">
+                                    <param id="0" name="Instance">thumbImage</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -505,17 +499,6 @@
                                 <action behavior="Pin" id="1" name="Unpin" sid="207699491322329" type="ListTail" />
                             </actions>
                         </event-block>
-                        <comment>Scrollbar</comment>
-                        <event-block sid="681031323530253">
-                            <conditions>
-                                <condition behavior="DragDrop" id="0" inverted="1" name="Is dragging" sid="675349514505897" type="ListHeader" />
-                            </conditions>
-                            <actions />
-                        </event-block>
-                        <event-block sid="136591919541884">
-                            <conditions />
-                            <actions />
-                        </event-block>
                     </sub-events>
                 </event-group>
                 <event-block sid="143064004452272">
@@ -534,6 +517,7 @@
         </event-group>
         <event-group description="" sid="158495084137460" title="Add track to playlist">
             <sub-events>
+                <comment>With this function I&apos;m getting track info from YouTube API.&#x0D;&#x0A;Video ID has to be passed as parameter 0</comment>
                 <event-block sid="743139618110159">
                     <conditions>
                         <condition id="0" name="On function" sid="450294693653393" type="func">
@@ -547,6 +531,7 @@
                         </action>
                     </actions>
                 </event-block>
+                <comment>Saving JSON response and storing it&apos;s values inside array</comment>
                 <event-block sid="278342241729532">
                     <conditions>
                         <condition id="0" name="On completed" sid="697107978880526" type="AJAX">
@@ -582,28 +567,31 @@
                         </action>
                         <action id="9" name="Scroll to bottom" sid="353783394257580" type="statusLog" />
                     </actions>
+                    <sub-events>
+                        <comment>If this is first queued song, play it immediately</comment>
+                        <event-block sid="585159127250543">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="249022256785463" type="Items">
+                                    <param id="0" name="Instance variable">first</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="417213957344521" type="func">
+                                    <param id="0" name="Name">&quot;play&quot;</param>
+                                    <param id="1" name="Parameter {n}">trackNo</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="320786442038671" type="Items">
+                                    <param id="0" name="Instance variable">first</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="479202626146132" title="Play track">
             <sub-events>
-                <event-block sid="579885468705461">
-                    <conditions>
-                        <condition id="1" name="Compare at XY" sid="516584281438163" type="Items">
-                            <param id="0" name="X">0</param>
-                            <param id="1" name="Y">0</param>
-                            <param id="2" name="Comparison">1</param>
-                            <param id="3" name="Value">0</param>
-                        </condition>
-                        <condition id="-4" name="Trigger once while true" sid="671922354997983" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Call function" sid="651151408915486" type="func">
-                            <param id="0" name="Name">&quot;play&quot;</param>
-                            <param id="1" name="Parameter {n}">trackNo</param>
-                        </action>
-                    </actions>
-                </event-block>
                 <event-block sid="881254812135844">
                     <conditions>
                         <condition id="0" name="On function" sid="297515238378750" type="func">
@@ -623,6 +611,11 @@
                         <condition id="-4" name="Trigger once while true" sid="687040466484422" type="System" />
                     </conditions>
                     <actions>
+                        <action id="11" name="Set value" sid="257412857462098" type="ListCtrl">
+                            <param id="0" name="Line index">trackNo</param>
+                            <param id="1" name="Key">&quot;selected&quot;</param>
+                            <param id="2" name="Value">0</param>
+                        </action>
                         <action id="-10" name="Add to" sid="364261327858779" type="System">
                             <param id="0" name="Variable">trackNo</param>
                             <param id="1" name="Value">1</param>
@@ -637,31 +630,57 @@
                     <conditions>
                         <condition id="0" name="Is playing" sid="661237001895234" type="ytPlayer" />
                     </conditions>
-                    <actions>
-                        <action id="5" name="Set frame" sid="417927371586388" type="Checkbox">
-                            <param id="0" name="Frame number">1</param>
-                        </action>
-                        <action id="11" name="Set value" sid="514174723308085" type="ListCtrl">
-                            <param id="0" name="Line index">ListCtrl.UID2LineIndex( LineBG.UID )</param>
-                            <param id="1" name="Key">&quot;selected&quot;</param>
-                            <param id="2" name="Value">Checkbox.AnimationFrame</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="804923875610690">
+                            <conditions>
+                                <condition id="-33" name="Pick by comparison" sid="450451296684173" type="System">
+                                    <param id="0" name="Object">Checkbox</param>
+                                    <param id="1" name="Expression">Checkbox.id</param>
+                                    <param id="2" name="Comparison">0</param>
+                                    <param id="3" name="Value">trackNo</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="230848083749006" type="Checkbox">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                                <action id="11" name="Set value" sid="514174723308085" type="ListCtrl">
+                                    <param id="0" name="Line index">trackNo</param>
+                                    <param id="1" name="Key">&quot;selected&quot;</param>
+                                    <param id="2" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-block sid="464726066724302">
                     <conditions>
                         <condition id="1" name="Is paused" sid="693244823465561" type="ytPlayer" />
                     </conditions>
-                    <actions>
-                        <action id="5" name="Set frame" sid="184455141139585" type="Checkbox">
-                            <param id="0" name="Frame number">2</param>
-                        </action>
-                        <action id="11" name="Set value" sid="953025939682940" type="ListCtrl">
-                            <param id="0" name="Line index">ListCtrl.UID2LineIndex( LineBG.UID )</param>
-                            <param id="1" name="Key">&quot;selected&quot;</param>
-                            <param id="2" name="Value">Checkbox.AnimationFrame</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="702066616634218">
+                            <conditions>
+                                <condition id="-33" name="Pick by comparison" sid="688936497406914" type="System">
+                                    <param id="0" name="Object">Checkbox</param>
+                                    <param id="1" name="Expression">Checkbox.id</param>
+                                    <param id="2" name="Comparison">0</param>
+                                    <param id="3" name="Value">trackNo</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="230377092242830" type="Checkbox">
+                                    <param id="0" name="Frame number">2</param>
+                                </action>
+                                <action id="11" name="Set value" sid="208644963389840" type="ListCtrl">
+                                    <param id="0" name="Line index">trackNo</param>
+                                    <param id="1" name="Key">&quot;selected&quot;</param>
+                                    <param id="2" name="Value">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>

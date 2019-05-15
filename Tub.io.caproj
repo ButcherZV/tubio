@@ -17,6 +17,7 @@
         <plugin author="McKack" id="CSS_import" version="1">CSS import</plugin>
         <plugin author="JP Deblonde" id="DataMatrix" version="1">DataMatrix</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Jesse Johnston, mod. JP Deblonde" id="HTML_Img_Pode" version="1.5">HTML_Img_Pode</plugin>
         <plugin author="Yann Granjon" id="JSON" version="1">JSON</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="List" version="1">List</plugin>
@@ -24,9 +25,11 @@
         <plugin author="Scirra" id="Multiplayer" version="1">Multiplayer</plugin>
         <plugin author="JP Deblonde" id="Pode_QRDecode" version="1">QRDecode</plugin>
         <plugin author="Rex.Rainbow" id="Rex_ListCtrl" version="0.100000001">List control</plugin>
+        <plugin author="Rex.Rainbow" id="Rex_Nickname" version="0.100000001">Nickname</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
+        <plugin author="Scirra" id="Tilemap" version="1">Tilemap</plugin>
         <plugin author="Dominic Businaro" id="UUID" version="1">UUID</plugin>
         <plugin author="Scirra" id="UserMedia" version="1">User Media</plugin>
         <plugin author="Rex.Rainbow" id="rex_TouchWrap" version="0.100000001">Touch wrap</plugin>
@@ -81,7 +84,7 @@
                     <type>LineBG</type>
                     <type>listItem</type>
                     <type>Checkbox</type>
-                    <type>thumb</type>
+                    <type>thumbImage</type>
                 </container>
             </object-type>
             <object-type name="txtInfo" sid="834290666940623">
@@ -162,7 +165,7 @@
                     <type>LineBG</type>
                     <type>listItem</type>
                     <type>Checkbox</type>
-                    <type>thumb</type>
+                    <type>thumbImage</type>
                 </container>
                 <animation-folder>
                     <animation framecount="3" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="381547522654361" speed="0">
@@ -178,14 +181,14 @@
                     <type>LineBG</type>
                     <type>listItem</type>
                     <type>Checkbox</type>
-                    <type>thumb</type>
+                    <type>thumbImage</type>
                 </container>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="508543784361633" speed="5">
                         <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\linebg.png">
                             <image-point name="Checkbox" x="0.05" y="0.510949" />
-                            <image-point name="Text" x="0.341667" y="0.182482" />
-                            <image-point name="thumb" x="0.208333" y="0.49635" />
+                            <image-point name="Text" x="0.333333" y="0.182482" />
+                            <image-point name="thumb" x="0.0916667" y="0.109489" />
                             <collision-poly>
                                 <point x="0" y="0" />
                                 <point x="1" y="0" />
@@ -250,12 +253,6 @@
                 <instance-variables>
                     <instance-variable name="id" sid="796084337489832" type="number" />
                 </instance-variables>
-                <container>
-                    <type>LineBG</type>
-                    <type>listItem</type>
-                    <type>Checkbox</type>
-                    <type>thumb</type>
-                </container>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="541510377508139" speed="5">
                         <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -274,12 +271,32 @@
         </object-type>
         <object-type global="1" name="Items" sid="435301481916131">
             <plugin id="Arr" />
+            <instance-variables>
+                <instance-variable name="first" sid="440954799525581" type="boolean" />
+            </instance-variables>
         </object-type>
         <object-type name="func" sid="766954090072408">
             <plugin id="Function" />
         </object-type>
         <object-type name="backBtn" sid="704069023758772">
             <plugin id="Button" />
+        </object-type>
+        <object-type name="thumbImage" sid="350326696492362">
+            <plugin id="HTML_Img_Pode" />
+            <container>
+                <type>LineBG</type>
+                <type>listItem</type>
+                <type>Checkbox</type>
+                <type>thumbImage</type>
+            </container>
+        </object-type>
+        <object-type name="Nickname" sid="875458936453255">
+            <plugin id="Rex_Nickname" />
+        </object-type>
+        <object-type name="Tilemap" sid="654948843665479">
+            <plugin id="Tilemap" />
+            <texture />
+            <tiles />
         </object-type>
     </object-folder>
     <families>
@@ -315,6 +332,7 @@
         <global-instance type="func" uid="26" />
         <global-instance type="Keyboard" uid="28" />
         <global-instance type="AJAX" uid="16" />
+        <global-instance type="Nickname" uid="65" />
     </global-instances>
     <sounds-folder />
     <music-folder />
