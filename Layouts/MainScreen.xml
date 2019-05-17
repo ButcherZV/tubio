@@ -181,6 +181,9 @@
                     </properties>
                     <instance-variables>
                         <id>0</id>
+                        <play>0</play>
+                        <link></link>
+                        <no>0</no>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -345,6 +348,7 @@
                     <instance-variables>
                         <kod>0</kod>
                         <link></link>
+                        <number>0</number>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -374,6 +378,8 @@
                     </properties>
                     <instance-variables>
                         <id>0</id>
+                        <link></link>
+                        <number>0</number>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -383,33 +389,6 @@
                         <z>0</z>
                         <width>320</width>
                         <height>91</height>
-                        <depth>0</depth>
-                        <hotspotX>0</hotspotX>
-                        <hotspotY>0</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="test" uid="33">
-                    <properties>
-                        <text>Text</text>
-                        <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-24,400,0</font>
-                        <color>0,0,0</color>
-                        <horizontal-alignment>Left</horizontal-alignment>
-                        <vertical-alignment>Top</vertical-alignment>
-                        <hotspot>Top-left</hotspot>
-                        <wrapping>Word</wrapping>
-                        <line-height>0</line-height>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>369</x>
-                        <y>30</y>
-                        <z>0</z>
-                        <width>377</width>
-                        <height>68</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
