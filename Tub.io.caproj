@@ -23,18 +23,19 @@
         <plugin author="Scirra" id="List" version="1">List</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Multiplayer" version="1">Multiplayer</plugin>
+        <plugin author="Scirra" id="NinePatch" version="1">9-patch</plugin>
         <plugin author="JP Deblonde" id="Pode_QRDecode" version="1">QRDecode</plugin>
         <plugin author="Rex.Rainbow" id="Rex_ListCtrl" version="0.100000001">List control</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Dominic Businaro" id="UUID" version="1">UUID</plugin>
         <plugin author="Scirra" id="UserMedia" version="1">User Media</plugin>
         <plugin author="Rex.Rainbow" id="rex_TouchWrap" version="0.100000001">Touch wrap</plugin>
         <plugin author="Rex.Rainbow" id="rex_youtube_player" version="0.100000001">Youtube player</plugin>
     </used-plugins>
     <used-behaviors>
-        <behavior author="Scirra" id="DragnDrop" version="1">Drag &amp; Drop</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Rex.Rainbow" id="Rex_TouchArea2" version="0.100000001">Touch area</behavior>
     </used-behaviors>
@@ -64,19 +65,19 @@
     </configuration-settings>
     <object-folder>
         <object-folder name="Text">
-            <object-type name="debug" sid="579042674534830">
+            <object-type name="txtDebug" sid="579042674534830">
                 <plugin id="Text" />
             </object-type>
-            <object-type name="qrCodeTxt" sid="945354144244284">
+            <object-type name="txtQRcode" sid="945354144244284">
                 <plugin id="Text" />
             </object-type>
-            <object-type name="Text2" sid="642137832276149">
+            <object-type name="txtStats" sid="642137832276149">
                 <plugin id="Text" />
             </object-type>
-            <object-type name="result" sid="287297284456233">
+            <object-type name="txtResult" sid="287297284456233">
                 <plugin id="Text" />
             </object-type>
-            <object-type name="listItem" sid="734723434025788">
+            <object-type name="txtListItem" sid="734723434025788">
                 <plugin id="Text" />
                 <instance-variables>
                     <instance-variable name="id" sid="487093639410271" type="number" />
@@ -86,7 +87,7 @@
                 <container>
                     <type>LineBG</type>
                     <type>thumbImage</type>
-                    <type>listItem</type>
+                    <type>txtListItem</type>
                     <type>Checkbox</type>
                 </container>
             </object-type>
@@ -167,7 +168,7 @@
                 <container>
                     <type>LineBG</type>
                     <type>thumbImage</type>
-                    <type>listItem</type>
+                    <type>txtListItem</type>
                     <type>Checkbox</type>
                 </container>
                 <animation-folder>
@@ -181,17 +182,20 @@
             </object-type>
             <object-type name="LineBG" sid="824510202931811">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="id" sid="465894888638399" type="number" />
+                </instance-variables>
                 <container>
                     <type>LineBG</type>
                     <type>thumbImage</type>
-                    <type>listItem</type>
+                    <type>txtListItem</type>
                     <type>Checkbox</type>
                 </container>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="508543784361633" speed="5">
                         <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\linebg.png">
                             <image-point name="Checkbox" x="0.05" y="0.510949" />
-                            <image-point name="Text" x="0.35" y="0.182482" />
+                            <image-point name="Text" x="0.35" y="0.167883" />
                             <image-point name="thumb" x="0.0916667" y="0.109489" />
                             <collision-poly>
                                 <point x="0" y="0" />
@@ -200,42 +204,6 @@
                                 <point x="0.0166667" y="0.933333" />
                             </collision-poly>
                         </frame>
-                    </animation>
-                </animation-folder>
-            </object-type>
-            <object-type name="ListHeader" sid="172434231124174">
-                <plugin id="Sprite" />
-                <behaviors>
-                    <behavior-type name="DragDrop" sid="848687945343152">
-                        <behavior id="DragnDrop" />
-                    </behavior-type>
-                </behaviors>
-                <animation-folder>
-                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="830582573751314" speed="5">
-                        <frame duration="1" hotspotX="0" hotspotY="1" original-source="C:\Users\Miroslav\Desktop\app\ListHeader.png">
-                            <image-point name="cover" x="0" y="0" />
-                        </frame>
-                    </animation>
-                </animation-folder>
-            </object-type>
-            <object-type name="ListTail" sid="169590152130615">
-                <plugin id="Sprite" />
-                <behaviors>
-                    <behavior-type name="Pin" sid="542236813216743">
-                        <behavior id="Pin" />
-                    </behavior-type>
-                </behaviors>
-                <animation-folder>
-                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="929137156501869" speed="5">
-                        <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Miroslav\Desktop\app\ListTail.png" />
-                    </animation>
-                </animation-folder>
-            </object-type>
-            <object-type name="tempCode" sid="475144550534692">
-                <plugin id="Sprite" />
-                <animation-folder>
-                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="632854603129783" speed="5">
-                        <frame duration="1" hotspotX="0" hotspotY="0" />
                     </animation>
                 </animation-folder>
             </object-type>
@@ -252,16 +220,30 @@
                     </animation>
                 </animation-folder>
             </object-type>
-            <object-type name="thumb" sid="653451601893915">
-                <plugin id="Sprite" />
+            <object-type name="box" sid="519002748560197">
+                <plugin id="NinePatch" />
                 <instance-variables>
-                    <instance-variable name="id" sid="796084337489832" type="number" />
+                    <instance-variable name="id" sid="761006341109664" type="number" />
                 </instance-variables>
-                <animation-folder>
-                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="541510377508139" speed="5">
-                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                    </animation>
-                </animation-folder>
+                <texture />
+            </object-type>
+            <object-type name="thumbImage" sid="221306188148112">
+                <plugin id="HTML_iFrame" />
+                <instance-variables>
+                    <instance-variable name="kod" sid="265705552739055" type="number" />
+                    <instance-variable name="link" sid="674039058293633" type="string" />
+                    <instance-variable name="number" sid="197372069730195" type="number" />
+                </instance-variables>
+                <container>
+                    <type>LineBG</type>
+                    <type>thumbImage</type>
+                    <type>txtListItem</type>
+                    <type>Checkbox</type>
+                </container>
+            </object-type>
+            <object-type name="bg" sid="652793408519814">
+                <plugin id="TiledBg" />
+                <texture />
             </object-type>
         </object-folder>
         <object-folder name="Buttons">
@@ -287,30 +269,16 @@
         <object-type name="func" sid="766954090072408">
             <plugin id="Function" />
         </object-type>
-        <object-type name="thumbImage" sid="221306188148112">
-            <plugin id="HTML_iFrame" />
-            <instance-variables>
-                <instance-variable name="kod" sid="265705552739055" type="number" />
-                <instance-variable name="link" sid="674039058293633" type="string" />
-                <instance-variable name="number" sid="197372069730195" type="number" />
-            </instance-variables>
-            <container>
-                <type>LineBG</type>
-                <type>thumbImage</type>
-                <type>listItem</type>
-                <type>Checkbox</type>
-            </container>
-        </object-type>
     </object-folder>
     <families>
         <family name="TEXT" plugin-id="Text" sid="199798342689734">
             <members>
-                <member>debug</member>
-                <member>listItem</member>
-                <member>qrCodeTxt</member>
-                <member>result</member>
-                <member>Text2</member>
+                <member>txtDebug</member>
                 <member>txtInfo</member>
+                <member>txtListItem</member>
+                <member>txtQRcode</member>
+                <member>txtResult</member>
+                <member>txtStats</member>
             </members>
         </family>
     </families>

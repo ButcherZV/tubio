@@ -17,28 +17,19 @@
                             <param id="0" name="Family name">&quot;Quicksand&quot;</param>
                             <param id="1" name="CSS URL">&quot;https://fonts.googleapis.com/css?family=Quicksand&quot;</param>
                         </action>
-                        <action id="0" name="Request camera" sid="948063613405043" type="UserMedia">
-                            <param id="0" name="Source">0</param>
-                            <param id="1" name="Preferred width">0</param>
-                            <param id="2" name="Preferred height">0</param>
+                        <action id="-9" name="Set value" sid="392811078736096" type="System">
+                            <param id="0" name="Variable">sessionID</param>
+                            <param id="1" name="Value">uppercase(left(IDgen.UuidV4,8))</param>
                         </action>
-                        <action id="0" name="Set text" sid="197583758172621" type="qrCodeTxt">
-                            <param id="0" name="Text">uppercase(left(IDgen.UuidV4,8))</param>
+                        <action id="0" name="Set text" sid="197583758172621" type="txtQRcode">
+                            <param id="0" name="Text">sessionID</param>
                         </action>
                         <action id="1" name="Encode" sid="324515220951438" type="DataMatrix">
                             <param id="0" name="Type">4</param>
                             <param id="1" name="Level">3</param>
-                            <param id="2" name="Text string">qrCodeTxt.Text</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="392811078736096" type="System">
-                            <param id="0" name="Variable">sessionID</param>
-                            <param id="1" name="Value">qrCodeTxt.Text</param>
+                            <param id="2" name="Text string">sessionID</param>
                         </action>
                         <action id="-9" name="Destroy" sid="787440493239080" type="LineBG" />
-                        <action id="-4" name="Set position to another object" sid="992815580166601" type="ListCtrl">
-                            <param id="0" name="Object">ListHeader</param>
-                            <param id="1" name="Image point (optional)">0</param>
-                        </action>
                         <action id="0" name="Set text" sid="309056377448120" type="statusLog">
                             <param id="0" name="Text">&quot;Connecting to server... &quot;</param>
                         </action>
@@ -60,18 +51,22 @@
                                 <action id="-3" name="Create object" sid="356671008722920" type="System">
                                     <param id="0" name="Object to create">LineBG</param>
                                     <param id="1" name="Layer">&quot;UI&quot;</param>
-                                    <param id="2" name="X">1337</param>
-                                    <param id="3" name="Y">110 + loopindex*120</param>
+                                    <param id="2" name="X">1351</param>
+                                    <param id="3" name="Y">73 + loopindex*120</param>
                                 </action>
-                                <action id="-4" name="Set position to another object" sid="508786567510057" type="listItem">
+                                <action id="-10" name="Set value" sid="177748946528378" type="LineBG">
+                                    <param id="0" name="Instance variable">id</param>
+                                    <param id="1" name="Value">loopindex</param>
+                                </action>
+                                <action id="-4" name="Set position to another object" sid="508786567510057" type="txtListItem">
                                     <param id="0" name="Object">LineBG</param>
                                     <param id="1" name="Image point (optional)">&quot;Text&quot;</param>
                                 </action>
-                                <action id="5" name="Set web font" sid="168584150372817" type="listItem">
+                                <action id="5" name="Set web font" sid="168584150372817" type="txtListItem">
                                     <param id="0" name="Family name">&quot;Quicksand&quot;</param>
                                     <param id="1" name="CSS URL">&quot;https://fonts.googleapis.com/css?family=Quicksand&quot;</param>
                                 </action>
-                                <action id="-10" name="Set value" sid="862492033119227" type="listItem">
+                                <action id="-10" name="Set value" sid="862492033119227" type="txtListItem">
                                     <param id="0" name="Instance variable">id</param>
                                     <param id="1" name="Value">loopindex</param>
                                 </action>
@@ -93,6 +88,26 @@
                                 </action>
                             </actions>
                         </event-block>
+                        <event-block sid="180566930367127">
+                            <conditions>
+                                <condition id="-33" name="Pick by comparison" sid="344580183227721" type="System">
+                                    <param id="0" name="Object">box</param>
+                                    <param id="1" name="Expression">box.id</param>
+                                    <param id="2" name="Comparison">0</param>
+                                    <param id="3" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-7" name="Set size" sid="733782575504787" type="box">
+                                    <param id="0" name="Width">ytPlayer.Width + 10</param>
+                                    <param id="1" name="Height">ytPlayer.Height + 10</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="992500387661958" type="box">
+                                    <param id="0" name="X">ytPlayer.X - 3</param>
+                                    <param id="1" name="Y">ytPlayer.Y - 3</param>
+                                </action>
+                            </actions>
+                        </event-block>
                     </sub-events>
                 </event-block>
                 <event-block sid="338002433972334">
@@ -105,48 +120,6 @@
                         <action id="-9" name="Set value" sid="565020829902033" type="System">
                             <param id="0" name="Variable">apikey</param>
                             <param id="1" name="Value">AJAX.LastData</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
-        </event-group>
-        <event-group description="" inactive="1" sid="460686642426863" title="QR Code">
-            <sub-events>
-                <event-block sid="178646166801010">
-                    <conditions>
-                        <condition id="-6" name="Every X seconds" sid="918146905521991" type="System">
-                            <param id="0" name="Interval (seconds)">1.5</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="2" name="Snapshot" sid="197238925550594" type="UserMedia">
-                            <param id="0" name="Format">1</param>
-                            <param id="1" name="JPEG quality">75</param>
-                        </action>
-                        <action id="10" name="Load image from URL" sid="231173681378501" type="tempCode">
-                            <param id="0" name="URI">UserMedia.SnapshotURL</param>
-                            <param id="1" name="Size">0</param>
-                            <param id="2" name="Cross-origin">0</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="201110418181885">
-                    <conditions>
-                        <condition id="10" name="On image URL loaded" sid="450826512158993" type="tempCode" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Decode" sid="258304242448835" type="QRDecode">
-                            <param id="0" name="QR Code : ">tempCode</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="716287292664060">
-                    <conditions>
-                        <condition id="0" name="QR Decoded" sid="523502939445550" type="QRDecode" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Set text" sid="952689941863878" type="debug">
-                            <param id="0" name="Text">QRDecode.decodedQRCode</param>
                         </action>
                     </actions>
                 </event-block>
@@ -209,27 +182,186 @@
                             <param id="0" name="Index">0</param>
                             <param id="1" name="Text">nickname &amp; &quot; (host)&quot;</param>
                         </action>
+                        <action id="0" name="Call function" sid="642869435170098" type="func">
+                            <param id="0" name="Name">&quot;updateStats&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="306298842987291">
+                    <conditions>
+                        <condition id="1" name="On error" sid="919570160534844" type="backend" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="971695709891784" type="statusLog">
+                            <param id="0" name="Text">statusLog.Text &amp; newline &amp; &quot;ERROR: &quot; &amp; backend.ErrorMessage</param>
+                        </action>
+                        <action id="9" name="Scroll to bottom" sid="224173243860172" type="statusLog" />
+                    </actions>
+                </event-block>
+                <event-block sid="341669072725490">
+                    <conditions>
+                        <condition id="13" name="On peer disconnected" sid="439653936510775" type="backend" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="673806865818862" type="statusLog">
+                            <param id="0" name="Text">statusLog.Text &amp; newline &amp; backend.PeerAlias &amp; &quot; has been disconnected from service.&quot;</param>
+                        </action>
+                        <action id="9" name="Scroll to bottom" sid="249674433309040" type="statusLog" />
                     </actions>
                 </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="242199201842493" title="Buttons and mouse">
             <sub-events>
+                <comment>Move playlist up</comment>
+                <event-block sid="698581854548045">
+                    <conditions>
+                        <condition id="8" name="On mouse wheel" sid="177290381496218" type="Mouse">
+                            <param id="0" name="Direction">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="426529051489523">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="956632095575399" type="System">
+                                    <param id="0" name="First value">orderNo</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="324427119826190" type="System">
+                                    <param id="0" name="Variable">buffer</param>
+                                    <param id="1" name="Value">Items.At(Items.Width-1,0) &amp; &quot;;&quot; &amp; Items.At(Items.Width-1,1) &amp; &quot;;&quot; &amp; Items.At(Items.Width-1,2) &amp; &quot;;&quot; &amp; Items.At(Items.Width-1,3)</param>
+                                </action>
+                                <action id="6" name="Pop" sid="909048478510526" type="Items">
+                                    <param id="0" name="Where">0</param>
+                                    <param id="1" name="Axis">0</param>
+                                </action>
+                                <action id="5" name="Push" sid="964120077827742" type="Items">
+                                    <param id="0" name="Where">1</param>
+                                    <param id="1" name="Value">0</param>
+                                    <param id="2" name="Axis">0</param>
+                                </action>
+                                <action id="3" name="Set at XY" sid="838546039279220" type="Items">
+                                    <param id="0" name="X">0</param>
+                                    <param id="1" name="Y">0</param>
+                                    <param id="2" name="Value">tokenat(buffer,0,&quot;;&quot;)</param>
+                                </action>
+                                <action id="3" name="Set at XY" sid="749005589109625" type="Items">
+                                    <param id="0" name="X">0</param>
+                                    <param id="1" name="Y">1</param>
+                                    <param id="2" name="Value">tokenat(buffer,1,&quot;;&quot;)</param>
+                                </action>
+                                <action id="3" name="Set at XY" sid="443339247649502" type="Items">
+                                    <param id="0" name="X">0</param>
+                                    <param id="1" name="Y">2</param>
+                                    <param id="2" name="Value">tokenat(buffer,2,&quot;;&quot;)</param>
+                                </action>
+                                <action id="3" name="Set at XY" sid="561102104614134" type="Items">
+                                    <param id="0" name="X">0</param>
+                                    <param id="1" name="Y">3</param>
+                                    <param id="2" name="Value">tokenat(buffer,3,&quot;;&quot;)</param>
+                                </action>
+                                <action id="-11" name="Subtract from" sid="130750390438065" type="System">
+                                    <param id="0" name="Variable">orderNo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Call function" sid="828784394461572" type="func">
+                                    <param id="0" name="Name">&quot;populateList&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Move playlist down</comment>
+                <event-block sid="437056363690353">
+                    <conditions>
+                        <condition id="8" name="On mouse wheel" sid="182869943774304" type="Mouse">
+                            <param id="0" name="Direction">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="231916681225720">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="421907969912572" type="System">
+                                    <param id="0" name="First value">Items.Width</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Second value">7</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="764514634181527" type="System">
+                                    <param id="0" name="First value">orderNo + 6</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Second value">Items.Width</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="142052365862060" type="System">
+                                    <param id="0" name="Variable">buffer</param>
+                                    <param id="1" name="Value">Items.At(0,0) &amp; &quot;;&quot; &amp; Items.At(0,1) &amp; &quot;;&quot; &amp; Items.At(0,2) &amp; &quot;;&quot; &amp; Items.At(0,3)</param>
+                                </action>
+                                <action id="6" name="Pop" sid="369715783482589" type="Items">
+                                    <param id="0" name="Where">1</param>
+                                    <param id="1" name="Axis">0</param>
+                                </action>
+                                <action id="5" name="Push" sid="198940253167567" type="Items">
+                                    <param id="0" name="Where">0</param>
+                                    <param id="1" name="Value">0</param>
+                                    <param id="2" name="Axis">0</param>
+                                </action>
+                                <action id="3" name="Set at XY" sid="567196455437948" type="Items">
+                                    <param id="0" name="X">Items.Width-1</param>
+                                    <param id="1" name="Y">0</param>
+                                    <param id="2" name="Value">tokenat(buffer,0,&quot;;&quot;)</param>
+                                </action>
+                                <action id="3" name="Set at XY" sid="311234416779740" type="Items">
+                                    <param id="0" name="X">Items.Width-1</param>
+                                    <param id="1" name="Y">1</param>
+                                    <param id="2" name="Value">tokenat(buffer,1,&quot;;&quot;)</param>
+                                </action>
+                                <action id="3" name="Set at XY" sid="811544688122566" type="Items">
+                                    <param id="0" name="X">Items.Width-1</param>
+                                    <param id="1" name="Y">2</param>
+                                    <param id="2" name="Value">tokenat(buffer,2,&quot;;&quot;)</param>
+                                </action>
+                                <action id="3" name="Set at XY" sid="216532917649124" type="Items">
+                                    <param id="0" name="X">Items.Width-1</param>
+                                    <param id="1" name="Y">3</param>
+                                    <param id="2" name="Value">tokenat(buffer,3,&quot;;&quot;)</param>
+                                </action>
+                                <action id="-10" name="Add to" sid="155289392781282" type="System">
+                                    <param id="0" name="Variable">orderNo</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Call function" sid="540349776755762" type="func">
+                                    <param id="0" name="Name">&quot;populateList&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Set cursor style, if it&apos;s above text or thumb image</comment>
                 <event-block any="1" sid="949225884019102">
                     <conditions>
                         <condition id="7" name="Cursor is over object" sid="837617346068310" type="Mouse">
                             <param id="0" name="Object">thumbImage</param>
                         </condition>
                         <condition id="7" name="Cursor is over object" sid="376612126073779" type="Mouse">
-                            <param id="0" name="Object">listItem</param>
-                        </condition>
-                        <condition id="7" name="Cursor is over object" sid="527357451171553" type="Mouse">
-                            <param id="0" name="Object">Checkbox</param>
+                            <param id="0" name="Object">txtListItem</param>
                         </condition>
                     </conditions>
                     <actions>
                         <action id="0" name="Set cursor style" sid="532724746599736" type="Mouse">
                             <param id="0" name="Cursor style">1</param>
+                        </action>
+                        <action id="4" name="Set CSS style" sid="778765759867815" type="thumbImage">
+                            <param id="0" name="Property name">&quot;cursor&quot;</param>
+                            <param id="1" name="Value">&quot;pointer&quot;</param>
                         </action>
                     </actions>
                 </event-block>
@@ -241,8 +373,13 @@
                         <action id="0" name="Set cursor style" sid="748356057082047" type="Mouse">
                             <param id="0" name="Cursor style">0</param>
                         </action>
+                        <action id="4" name="Set CSS style" sid="848649079727341" type="thumbImage">
+                            <param id="0" name="Property name">&quot;cursor&quot;</param>
+                            <param id="1" name="Value">&quot;default&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
+                <comment>Open QR code window</comment>
                 <event-block sid="639431480166259">
                     <conditions>
                         <condition id="0" name="On clicked" sid="611106376539989" type="qrBtn" />
@@ -261,12 +398,111 @@
                             <param id="1" name="Visibility">0</param>
                         </action>
                         <action id="8" name="Set unfocused" sid="324712886458483" type="qrBtn" />
-                        <action id="-12" name="Set group active" sid="296569871449908" type="System">
-                            <param id="0" name="Group name">&quot;QR Code&quot;</param>
-                            <param id="1" name="State">1</param>
-                        </action>
                     </actions>
                 </event-block>
+                <comment>Close QR code window</comment>
+                <event-block sid="553657666856716">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="304970700310428" type="backBtn" />
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set layer visible" sid="428758954854013" type="System">
+                            <param id="0" name="Layer">&quot;QR&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="152444135806805" type="System">
+                            <param id="0" name="Layer">&quot;UI&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="782612872471407" type="System">
+                            <param id="0" name="Layer">&quot;Cover&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="8" name="Set unfocused" sid="266333443088374" type="backBtn" />
+                    </actions>
+                </event-block>
+                <comment>Play specific track on playlist by clicking on it&apos;s thumbnail image or text</comment>
+                <event-block sid="551415370309749">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="288529482742028" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">thumbImage</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="321525867794246">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="962015357531932" type="thumbImage">
+                                    <param id="0" name="Instance variable">link</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">&quot;&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Set at XY" sid="816598533445396" type="Items">
+                                    <param id="0" name="X">currentTackNo</param>
+                                    <param id="1" name="Y">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="493496203443896" type="System">
+                                    <param id="0" name="Variable">currentTackNo</param>
+                                    <param id="1" name="Value">thumbImage.number</param>
+                                </action>
+                                <action id="0" name="Call function" sid="252831263788986" type="func">
+                                    <param id="0" name="Name">&quot;populateList&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="0" name="Call function" sid="755657243978769" type="func">
+                                    <param id="0" name="Name">&quot;play&quot;</param>
+                                    <param id="1" name="Parameter {n}">currentTackNo</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="248752453846596">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="523715188588932" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">txtListItem</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="192828678279248">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="576804701721346" type="txtListItem">
+                                    <param id="0" name="Instance variable">link</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">&quot;&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Set at XY" sid="749228045171749" type="Items">
+                                    <param id="0" name="X">currentTackNo</param>
+                                    <param id="1" name="Y">3</param>
+                                    <param id="2" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="842743163297995" type="System">
+                                    <param id="0" name="Variable">currentTackNo</param>
+                                    <param id="1" name="Value">txtListItem.number</param>
+                                </action>
+                                <action id="0" name="Call function" sid="973519752241397" type="func">
+                                    <param id="0" name="Name">&quot;populateList&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="0" name="Call function" sid="304913701658178" type="func">
+                                    <param id="0" name="Name">&quot;play&quot;</param>
+                                    <param id="1" name="Parameter {n}">currentTackNo</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Add track to playlist</comment>
                 <variable constant="0" name="index" sid="740944321863343" static="0" type="number">0</variable>
                 <variable constant="0" name="remaining" sid="459825645877637" static="0" type="number">0</variable>
                 <variable constant="0" name="code" sid="191418631200414" static="0" type="text"></variable>
@@ -297,7 +533,7 @@
                         <event-block any="1" sid="178243868898431">
                             <conditions>
                                 <condition id="-8" name="Compare two values" sid="586564826086178" type="System">
-                                    <param id="0" name="First value">find(ytLink.Text,&quot;https://www.youtube.com&quot;)</param>
+                                    <param id="0" name="First value">find(ytLink.Text,&quot;https://www.youtube.com/watch?v=&quot;)</param>
                                     <param id="1" name="Comparison">1</param>
                                     <param id="2" name="Second value">-1</param>
                                 </condition>
@@ -319,7 +555,7 @@
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="754928885758852">
+                        <event-block sid="473995541856600">
                             <conditions />
                             <actions>
                                 <action id="0" name="Set text" sid="989877199654325" type="ytLink">
@@ -329,316 +565,10 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="553657666856716">
-                    <conditions>
-                        <condition id="0" name="On clicked" sid="304970700310428" type="backBtn" />
-                    </conditions>
-                    <actions>
-                        <action id="-4" name="Set layer visible" sid="428758954854013" type="System">
-                            <param id="0" name="Layer">&quot;QR&quot;</param>
-                            <param id="1" name="Visibility">0</param>
-                        </action>
-                        <action id="-4" name="Set layer visible" sid="152444135806805" type="System">
-                            <param id="0" name="Layer">&quot;UI&quot;</param>
-                            <param id="1" name="Visibility">1</param>
-                        </action>
-                        <action id="-4" name="Set layer visible" sid="782612872471407" type="System">
-                            <param id="0" name="Layer">&quot;Cover&quot;</param>
-                            <param id="1" name="Visibility">1</param>
-                        </action>
-                        <action id="8" name="Set unfocused" sid="266333443088374" type="backBtn" />
-                        <action id="-12" name="Set group active" sid="595091274268454" type="System">
-                            <param id="0" name="Group name">&quot;QR Code&quot;</param>
-                            <param id="1" name="State">0</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="551415370309749">
-                    <conditions>
-                        <condition id="6" name="On object clicked" sid="288529482742028" type="Mouse">
-                            <param id="0" name="Mouse button">0</param>
-                            <param id="1" name="Click type">0</param>
-                            <param id="2" name="Object clicked">thumbImage</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="3" name="Set at XY" sid="816598533445396" type="Items">
-                            <param id="0" name="X">trackNo</param>
-                            <param id="1" name="Y">3</param>
-                            <param id="2" name="Value">0</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="493496203443896" type="System">
-                            <param id="0" name="Variable">trackNo</param>
-                            <param id="1" name="Value">thumbImage.number</param>
-                        </action>
-                        <action id="0" name="Call function" sid="252831263788986" type="func">
-                            <param id="0" name="Name">&quot;populateList&quot;</param>
-                            <param id="1" name="Parameter {n}"></param>
-                        </action>
-                        <action id="0" name="Call function" sid="755657243978769" type="func">
-                            <param id="0" name="Name">&quot;play&quot;</param>
-                            <param id="1" name="Parameter {n}">trackNo</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="248752453846596">
-                    <conditions>
-                        <condition id="6" name="On object clicked" sid="523715188588932" type="Mouse">
-                            <param id="0" name="Mouse button">0</param>
-                            <param id="1" name="Click type">0</param>
-                            <param id="2" name="Object clicked">listItem</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="3" name="Set at XY" sid="749228045171749" type="Items">
-                            <param id="0" name="X">trackNo</param>
-                            <param id="1" name="Y">3</param>
-                            <param id="2" name="Value">0</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="842743163297995" type="System">
-                            <param id="0" name="Variable">trackNo</param>
-                            <param id="1" name="Value">listItem.number</param>
-                        </action>
-                        <action id="0" name="Call function" sid="973519752241397" type="func">
-                            <param id="0" name="Name">&quot;populateList&quot;</param>
-                            <param id="1" name="Parameter {n}"></param>
-                        </action>
-                        <action id="0" name="Call function" sid="304913701658178" type="func">
-                            <param id="0" name="Name">&quot;play&quot;</param>
-                            <param id="1" name="Parameter {n}">trackNo</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="698581854548045">
-                    <conditions>
-                        <condition id="8" name="On mouse wheel" sid="177290381496218" type="Mouse">
-                            <param id="0" name="Direction">1</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-11" name="Subtract from" sid="191593982095544" type="System">
-                            <param id="0" name="Variable">start</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                    </actions>
-                    <sub-events>
-                        <event-block sid="367898352989628">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="610863246008260" type="System">
-                                    <param id="0" name="Variable">start</param>
-                                    <param id="1" name="Comparison">2</param>
-                                    <param id="2" name="Value">0</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-9" name="Set value" sid="251489398054919" type="System">
-                                    <param id="0" name="Variable">start</param>
-                                    <param id="1" name="Value">Items.Width-1</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="875861045204976">
-                            <conditions />
-                            <actions>
-                                <action id="0" name="Call function" sid="698287869127397" type="func">
-                                    <param id="0" name="Name">&quot;populateList&quot;</param>
-                                    <param id="1" name="Parameter {n}"></param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-                <event-block sid="437056363690353">
-                    <conditions>
-                        <condition id="8" name="On mouse wheel" sid="182869943774304" type="Mouse">
-                            <param id="0" name="Direction">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-10" name="Add to" sid="369715783482589" type="System">
-                            <param id="0" name="Variable">start</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
-                    </actions>
-                    <sub-events>
-                        <event-block sid="348999629046423">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="561245531980605" type="System">
-                                    <param id="0" name="Variable">start</param>
-                                    <param id="1" name="Comparison">5</param>
-                                    <param id="2" name="Value">Items.Width</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-9" name="Set value" sid="597717992642456" type="System">
-                                    <param id="0" name="Variable">start</param>
-                                    <param id="1" name="Value">0</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="612898733145750">
-                            <conditions />
-                            <actions>
-                                <action id="0" name="Call function" sid="133553690262327" type="func">
-                                    <param id="0" name="Name">&quot;populateList&quot;</param>
-                                    <param id="1" name="Parameter {n}"></param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="813184452036157" title="Playlist">
             <sub-events>
-                <event-group description="" sid="180677723423782" title="Scroll bar">
-                    <sub-events>
-                        <comment>Create a line</comment>
-                        <event-block sid="385298317894301">
-                            <conditions>
-                                <condition id="1" name="On line visible" sid="153066598673755" type="ListCtrl" />
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="724505612378597" type="System">
-                                    <param id="0" name="Object to create">LineBG</param>
-                                    <param id="1" name="Layer">&quot;UI&quot;</param>
-                                    <param id="2" name="X">ListCtrl.LineTLX</param>
-                                    <param id="3" name="Y">ListCtrl.LineTLY</param>
-                                </action>
-                                <action id="-5" name="Set width" sid="495977433316063" type="LineBG">
-                                    <param id="0" name="Width">lerp(LineBG.Width,ListCtrl.Width,1)</param>
-                                </action>
-                                <action id="3" name="Pin instance" sid="417380268247622" type="ListCtrl">
-                                    <param id="0" name="Instance">LineBG</param>
-                                </action>
-                                <action id="-4" name="Set position to another object" sid="295664514164817" type="listItem">
-                                    <param id="0" name="Object">LineBG</param>
-                                    <param id="1" name="Image point (optional)">&quot;Text&quot;</param>
-                                </action>
-                                <action id="0" name="Set text" sid="281095202642998" type="listItem">
-                                    <param id="0" name="Text">ListCtrl.LineIndex +1 &amp; &quot;. &quot; &amp; Items.At(ListCtrl.LineIndex, 1)</param>
-                                </action>
-                                <action id="5" name="Set web font" sid="200824059328889" type="listItem">
-                                    <param id="0" name="Family name">&quot;Quicksand&quot;</param>
-                                    <param id="1" name="CSS URL">&quot;https://fonts.googleapis.com/css?family=Quicksand&quot;</param>
-                                </action>
-                                <action id="3" name="Pin instance" sid="628801726341961" type="ListCtrl">
-                                    <param id="0" name="Instance">listItem</param>
-                                </action>
-                                <action id="-4" name="Set position to another object" sid="288695264630163" type="Checkbox">
-                                    <param id="0" name="Object">LineBG</param>
-                                    <param id="1" name="Image point (optional)">&quot;Checkbox&quot;</param>
-                                </action>
-                                <action id="5" name="Set frame" sid="861491829554389" type="Checkbox">
-                                    <param id="0" name="Frame number">ListCtrl.At( ListCtrl.LineIndex, &quot;selected&quot;, 0 )</param>
-                                </action>
-                                <action id="-10" name="Set value" sid="370256207235119" type="Checkbox">
-                                    <param id="0" name="Instance variable">id</param>
-                                    <param id="1" name="Value">ListCtrl.LineIndex</param>
-                                </action>
-                                <action id="3" name="Pin instance" sid="105692386860089" type="ListCtrl">
-                                    <param id="0" name="Instance">Checkbox</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <comment>Change property of a line</comment>
-                        <event-block disabled="1" sid="220191122813707">
-                            <conditions>
-                                <condition id="3" name="On touched object" sid="220443458011418" type="TouchWrap">
-                                    <param id="0" name="Object">Checkbox</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="5" name="Set frame" sid="919950536358108" type="Checkbox">
-                                    <param id="0" name="Frame number">(Checkbox.AnimationFrame = 0)? 1:0</param>
-                                </action>
-                                <action id="11" name="Set value" sid="952053962151256" type="ListCtrl">
-                                    <param id="0" name="Line index">ListCtrl.UID2LineIndex( LineBG.UID )</param>
-                                    <param id="1" name="Key">&quot;selected&quot;</param>
-                                    <param id="2" name="Value">Checkbox.AnimationFrame</param>
-                                </action>
-                                <action id="0" name="Call function" sid="390378663515007" type="func">
-                                    <param id="0" name="Name">&quot;GetSelectedItems&quot;</param>
-                                    <param id="1" name="Parameter {n}"></param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <comment>Show properties of current list</comment>
-                        <event-block disabled="1" sid="489554453678318">
-                            <conditions>
-                                <condition id="0" name="On function" sid="571538772197307" type="func">
-                                    <param id="0" name="Name">&quot;GetSelectedItems&quot;</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="0" name="Set text" sid="239533517190511" type="result">
-                                    <param id="0" name="Text">&quot;&quot;</param>
-                                </action>
-                            </actions>
-                            <sub-events>
-                                <event-block disabled="1" sid="779802667948200">
-                                    <conditions>
-                                        <condition id="14" name="For each matched line" sid="898701075176753" type="ListCtrl">
-                                            <param id="0" name="Key">&quot;selected&quot;</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">1</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="1" name="Append text" sid="313259708987597" type="result">
-                                            <param id="0" name="Text">ListCtrl.LineIndex &amp; &quot;:&quot; &amp; Items.At( ListCtrl.LineIndex ) &amp; newline</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
-                        </event-block>
-                        <comment>Drag scroll</comment>
-                        <event-block sid="327484225852203">
-                            <conditions>
-                                <condition behavior="TouchArea" id="3" name="On touch moving" sid="696593985887037" type="ListCtrl" />
-                                <condition id="4" inverted="1" name="Is touching object" sid="349522816804498" type="TouchWrap">
-                                    <param id="0" name="Object">Checkbox</param>
-                                </condition>
-                                <condition behavior="DragDrop" id="0" inverted="1" name="Is dragging" sid="530906194912783" type="ListHeader" />
-                            </conditions>
-                            <actions>
-                                <action id="2" name="Add to" sid="262574340129061" type="ListCtrl">
-                                    <param id="0" name="Value">ListCtrl.TouchArea.DeltaY</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <comment>Drag list</comment>
-                        <event-block sid="533838109043293">
-                            <conditions>
-                                <condition behavior="DragDrop" id="1" name="On drag start" sid="341369841791476" type="ListHeader" />
-                            </conditions>
-                            <actions>
-                                <action behavior="Pin" id="0" name="Pin to object" sid="945609580596190" type="ListCtrl">
-                                    <param id="0" name="Pin to">ListHeader</param>
-                                    <param id="1" name="Mode">1</param>
-                                </action>
-                                <action behavior="Pin" id="0" name="Pin to object" sid="296546487446420" type="TableBG">
-                                    <param id="0" name="Pin to">ListHeader</param>
-                                    <param id="1" name="Mode">0</param>
-                                </action>
-                                <action behavior="Pin" id="0" name="Pin to object" sid="903482033685659" type="ListTail">
-                                    <param id="0" name="Pin to">ListHeader</param>
-                                    <param id="1" name="Mode">1</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="560783371869730">
-                            <conditions>
-                                <condition behavior="DragDrop" id="2" name="On drop" sid="107642505669161" type="ListHeader" />
-                            </conditions>
-                            <actions>
-                                <action behavior="Pin" id="1" name="Unpin" sid="573006513360268" type="ListCtrl" />
-                                <action behavior="Pin" id="1" name="Unpin" sid="428535133767734" type="TableBG" />
-                                <action behavior="Pin" id="1" name="Unpin" sid="207699491322329" type="ListTail" />
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-group>
                 <event-block sid="143064004452272">
                     <conditions>
                         <condition id="16" name="On any peer message" sid="343796000376698" type="backend" />
@@ -658,27 +588,10 @@
                     </conditions>
                     <actions />
                     <sub-events>
-                        <event-block sid="149499655690254">
-                            <conditions />
-                            <actions>
-                                <action id="-9" name="Set value" sid="831827865595475" type="System">
-                                    <param id="0" name="Variable">loop1</param>
-                                    <param id="1" name="Value">start</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="454624408074772" type="System">
-                                    <param id="0" name="Variable">loop2</param>
-                                    <param id="1" name="Value">start</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="679161718235423" type="System">
-                                    <param id="0" name="Variable">loop3</param>
-                                    <param id="1" name="Value">start</param>
-                                </action>
-                            </actions>
-                        </event-block>
                         <event-block sid="839710671828793">
                             <conditions>
                                 <condition id="-12" name="Repeat" sid="672372623361824" type="System">
-                                    <param id="0" name="Count">Items.Width</param>
+                                    <param id="0" name="Count">Items.Width &lt;= 7 ? Items.Width : 6</param>
                                 </condition>
                             </conditions>
                             <actions />
@@ -686,130 +599,43 @@
                                 <event-block sid="495389720861454">
                                     <conditions>
                                         <condition id="-33" name="Pick by comparison" sid="806403841191631" type="System">
-                                            <param id="0" name="Object">listItem</param>
-                                            <param id="1" name="Expression">listItem.id</param>
+                                            <param id="0" name="Object">LineBG</param>
+                                            <param id="1" name="Expression">LineBG.id</param>
                                             <param id="2" name="Comparison">0</param>
-                                            <param id="3" name="Value">loop1</param>
+                                            <param id="3" name="Value">loopindex</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="0" name="Set text" sid="302768274842790" type="listItem">
-                                            <param id="0" name="Text">loop1+1 &amp; &quot;. &quot; &amp;Items.At(loop1,1)</param>
+                                        <action id="0" name="Set text" sid="302768274842790" type="txtListItem">
+                                            <param id="0" name="Text">loopindex+orderNo &amp; &quot;. &quot; &amp;Items.At(loopindex,1)</param>
                                         </action>
-                                        <action id="-10" name="Set value" sid="299255004971642" type="listItem">
+                                        <action id="-10" name="Set value" sid="299255004971642" type="txtListItem">
                                             <param id="0" name="Instance variable">link</param>
-                                            <param id="1" name="Value">Items.At(loop1,0)</param>
+                                            <param id="1" name="Value">Items.At(loopindex,0)</param>
                                         </action>
-                                        <action id="-10" name="Set value" sid="498009299994882" type="listItem">
+                                        <action id="-10" name="Set value" sid="498009299994882" type="txtListItem">
                                             <param id="0" name="Instance variable">number</param>
-                                            <param id="1" name="Value">Items.IndexOf(Items.At(loop1,0))</param>
+                                            <param id="1" name="Value">Items.IndexOf(Items.At(loopindex,0))</param>
                                         </action>
-                                        <action id="-10" name="Add to" sid="197867446600633" type="System">
-                                            <param id="0" name="Variable">loop1</param>
-                                            <param id="1" name="Value">1</param>
-                                        </action>
-                                    </actions>
-                                    <sub-events>
-                                        <event-block sid="206344578123921">
-                                            <conditions>
-                                                <condition id="-14" name="Compare variable" sid="896029632626126" type="System">
-                                                    <param id="0" name="Variable">loop1</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">Items.Width</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="-9" name="Set value" sid="889820432235602" type="System">
-                                                    <param id="0" name="Variable">loop1</param>
-                                                    <param id="1" name="Value">0</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                    </sub-events>
-                                </event-block>
-                                <event-block sid="739959252068540">
-                                    <conditions>
-                                        <condition id="-33" name="Pick by comparison" sid="860852336109634" type="System">
-                                            <param id="0" name="Object">thumbImage</param>
-                                            <param id="1" name="Expression">thumbImage.kod</param>
-                                            <param id="2" name="Comparison">0</param>
-                                            <param id="3" name="Value">loop2</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
                                         <action id="6" name="Set HTML" sid="616628651488990" type="thumbImage">
-                                            <param id="0" name="Set HTML">&quot;&lt;img class=fill src=&apos;&quot; &amp; Items.At(loop2,2) &amp; &quot;&apos;&gt;&quot;</param>
+                                            <param id="0" name="Set HTML">&quot;&lt;img class=fill src=&apos;&quot; &amp; Items.At(loopindex,2) &amp; &quot;&apos;&gt;&quot;</param>
                                         </action>
                                         <action id="-10" name="Set value" sid="862265451297623" type="thumbImage">
                                             <param id="0" name="Instance variable">link</param>
-                                            <param id="1" name="Value">Items.At(loop2,0)</param>
+                                            <param id="1" name="Value">Items.At(loopindex,0)</param>
                                         </action>
                                         <action id="-10" name="Set value" sid="357396363493873" type="thumbImage">
                                             <param id="0" name="Instance variable">number</param>
-                                            <param id="1" name="Value">Items.IndexOf(Items.At(loop2,0))</param>
+                                            <param id="1" name="Value">Items.IndexOf(Items.At(loopindex,0))</param>
                                         </action>
-                                        <action id="-10" name="Add to" sid="341464604979295" type="System">
-                                            <param id="0" name="Variable">loop2</param>
-                                            <param id="1" name="Value">1</param>
-                                        </action>
-                                    </actions>
-                                    <sub-events>
-                                        <event-block sid="482379828271398">
-                                            <conditions>
-                                                <condition id="-14" name="Compare variable" sid="933241780844309" type="System">
-                                                    <param id="0" name="Variable">loop2</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">Items.Width</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="-9" name="Set value" sid="599638881590523" type="System">
-                                                    <param id="0" name="Variable">loop2</param>
-                                                    <param id="1" name="Value">0</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                    </sub-events>
-                                </event-block>
-                                <event-block sid="218489224654354">
-                                    <conditions>
-                                        <condition id="-33" name="Pick by comparison" sid="969951642067223" type="System">
-                                            <param id="0" name="Object">Checkbox</param>
-                                            <param id="1" name="Expression">Checkbox.id</param>
-                                            <param id="2" name="Comparison">0</param>
-                                            <param id="3" name="Value">loop3</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
                                         <action id="5" name="Set frame" sid="635795136421370" type="Checkbox">
-                                            <param id="0" name="Frame number">Items.At(loop3,3)</param>
+                                            <param id="0" name="Frame number">Items.At(loopindex,3)</param>
                                         </action>
                                         <action id="-10" name="Set value" sid="557457660704481" type="Checkbox">
                                             <param id="0" name="Instance variable">link</param>
-                                            <param id="1" name="Value">Items.At(loop3,0)</param>
-                                        </action>
-                                        <action id="-10" name="Add to" sid="460651892522510" type="System">
-                                            <param id="0" name="Variable">loop3</param>
-                                            <param id="1" name="Value">1</param>
+                                            <param id="1" name="Value">Items.At(loopindex,0)</param>
                                         </action>
                                     </actions>
-                                    <sub-events>
-                                        <event-block sid="534140142978818">
-                                            <conditions>
-                                                <condition id="-14" name="Compare variable" sid="206261842397666" type="System">
-                                                    <param id="0" name="Variable">loop3</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">Items.Width</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="-9" name="Set value" sid="920139361391703" type="System">
-                                                    <param id="0" name="Variable">loop3</param>
-                                                    <param id="1" name="Value">0</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-block>
@@ -870,6 +696,14 @@
                             <param id="0" name="Text">statusLog.Text &amp; newline &amp; nickname &amp; &quot; just queued &quot; &amp; Items.At(Items.Width-1,1) &amp; &quot; into the playlist.&quot;</param>
                         </action>
                         <action id="9" name="Scroll to bottom" sid="353783394257580" type="statusLog" />
+                        <action id="-10" name="Add to" sid="981328139984143" type="System">
+                            <param id="0" name="Variable">sharedSongs</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Call function" sid="439331602818177" type="func">
+                            <param id="0" name="Name">&quot;updateStats&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                     </actions>
                     <sub-events>
                         <comment>If this is first queued song, play it immediately</comment>
@@ -882,7 +716,7 @@
                             <actions>
                                 <action id="0" name="Call function" sid="417213957344521" type="func">
                                     <param id="0" name="Name">&quot;play&quot;</param>
-                                    <param id="1" name="Parameter {n}">trackNo</param>
+                                    <param id="1" name="Parameter {n}">currentTackNo</param>
                                 </action>
                                 <action id="-13" name="Set boolean" sid="320786442038671" type="Items">
                                     <param id="0" name="Instance variable">first</param>
@@ -903,7 +737,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="479202626146132" title="Player">
+        <event-group description="" sid="479202626146132" title="YouTube Player">
             <sub-events>
                 <event-block sid="881254812135844">
                     <conditions>
@@ -913,7 +747,7 @@
                     </conditions>
                     <actions>
                         <action id="3" name="Set at XY" sid="936492670559609" type="Items">
-                            <param id="0" name="X">trackNo</param>
+                            <param id="0" name="X">currentTackNo</param>
                             <param id="1" name="Y">3</param>
                             <param id="2" name="Value">3</param>
                         </action>
@@ -953,17 +787,17 @@
                     </conditions>
                     <actions>
                         <action id="3" name="Set at XY" sid="131841735695997" type="Items">
-                            <param id="0" name="X">trackNo</param>
+                            <param id="0" name="X">currentTackNo</param>
                             <param id="1" name="Y">3</param>
                             <param id="2" name="Value">0</param>
                         </action>
                         <action id="-10" name="Add to" sid="364261327858779" type="System">
-                            <param id="0" name="Variable">trackNo</param>
+                            <param id="0" name="Variable">currentTackNo</param>
                             <param id="1" name="Value">1</param>
                         </action>
                         <action id="0" name="Call function" sid="626596619581930" type="func">
                             <param id="0" name="Name">&quot;play&quot;</param>
-                            <param id="1" name="Parameter {n}">trackNo</param>
+                            <param id="1" name="Parameter {n}">currentTackNo</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -973,7 +807,7 @@
                                     <param id="0" name="Object">Checkbox</param>
                                     <param id="1" name="Expression">Checkbox.link</param>
                                     <param id="2" name="Comparison">0</param>
-                                    <param id="3" name="Value">Items.At(trackNo,0)</param>
+                                    <param id="3" name="Value">Items.At(currentTackNo,0)</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -994,7 +828,7 @@
                     </conditions>
                     <actions>
                         <action id="3" name="Set at XY" sid="635231041760220" type="Items">
-                            <param id="0" name="X">trackNo</param>
+                            <param id="0" name="X">currentTackNo</param>
                             <param id="1" name="Y">3</param>
                             <param id="2" name="Value">1</param>
                         </action>
@@ -1006,7 +840,7 @@
                                     <param id="0" name="Object">Checkbox</param>
                                     <param id="1" name="Expression">Checkbox.link</param>
                                     <param id="2" name="Comparison">0</param>
-                                    <param id="3" name="Value">Items.At(trackNo,0)</param>
+                                    <param id="3" name="Value">Items.At(currentTackNo,0)</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -1027,7 +861,7 @@
                     </conditions>
                     <actions>
                         <action id="3" name="Set at XY" sid="454982260784882" type="Items">
-                            <param id="0" name="X">trackNo</param>
+                            <param id="0" name="X">currentTackNo</param>
                             <param id="1" name="Y">3</param>
                             <param id="2" name="Value">2</param>
                         </action>
@@ -1039,7 +873,7 @@
                                     <param id="0" name="Object">Checkbox</param>
                                     <param id="1" name="Expression">Checkbox.link</param>
                                     <param id="2" name="Comparison">0</param>
-                                    <param id="3" name="Value">Items.At(trackNo,0)</param>
+                                    <param id="3" name="Value">Items.At(currentTackNo,0)</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -1069,6 +903,10 @@
                         <action id="7" name="Add item" sid="508988991701714" type="clientList">
                             <param id="0" name="Text">backend.PeerAlias</param>
                         </action>
+                        <action id="0" name="Call function" sid="574090327929994" type="func">
+                            <param id="0" name="Name">&quot;updateStats&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="481033128590739">
@@ -1095,6 +933,34 @@
                             <actions>
                                 <action id="9" name="Remove" sid="153206071636105" type="clientList">
                                     <param id="0" name="Index">loopindex</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="582010549092949">
+                    <conditions>
+                        <condition id="0" name="On function" sid="992118930901551" type="func">
+                            <param id="0" name="Name">&quot;updateStats&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="users" sid="953727067116571" static="0" type="text"></variable>
+                        <variable constant="0" name="songs" sid="675818952935716" static="0" type="text"></variable>
+                        <event-block sid="400976236822752">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="703563602729399" type="System">
+                                    <param id="0" name="Variable">users</param>
+                                    <param id="1" name="Value">backend.PeerCount &lt; 2 ? &quot; user&quot; : &quot; users&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="829260759833120" type="System">
+                                    <param id="0" name="Variable">songs</param>
+                                    <param id="1" name="Value">sharedSongs &lt; 2 ? &quot; song&quot; : &quot; songs&quot;</param>
+                                </action>
+                                <action id="0" name="Set text" sid="590565797694087" type="txtStats">
+                                    <param id="0" name="Text">&quot;STATS: &quot; &amp; backend.PeerCount &amp; users &amp; &quot; connected / &quot; &amp; sharedSongs &amp; songs &amp; &quot; shared.&quot;</param>
                                 </action>
                             </actions>
                         </event-block>

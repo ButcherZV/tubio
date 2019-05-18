@@ -3,13 +3,12 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>variables</name>
     <events>
-        <variable constant="0" name="loop1" sid="174602857790811" static="0" type="number">0</variable>
-        <variable constant="0" name="loop2" sid="211387103414403" static="0" type="number">0</variable>
-        <variable constant="0" name="loop3" sid="615549778142289" static="0" type="number">0</variable>
-        <variable constant="0" name="start" sid="721669698958621" static="0" type="number">0</variable>
-        <variable constant="0" name="trackNo" sid="388829031228986" static="0" type="number">0</variable>
+        <variable comment="Number of shared songs in this session" constant="0" name="sharedSongs" sid="595484245936316" static="0" type="number">0</variable>
+        <variable comment="Order of a track in a playlist" constant="0" name="orderNo" sid="278215988953151" static="0" type="number">1</variable>
+        <variable comment="Used for storing parameters between array shift" constant="0" name="buffer" sid="509730404480848" static="0" type="text"></variable>
+        <variable comment="Current track number" constant="0" name="currentTackNo" sid="388829031228986" static="0" type="number">0</variable>
         <variable comment="API Key of YouTube" constant="0" name="apikey" sid="895368739357353" static="0" type="text"></variable>
         <variable comment="Host nickname" constant="0" name="nickname" sid="891118992787240" static="0" type="text">djAPE</variable>
-        <variable comment="ID number of current session" constant="0" name="sessionID" sid="573950865029178" static="0" type="number">0</variable>
+        <variable comment="ID number of current session" constant="0" name="sessionID" sid="573950865029178" static="0" type="text"></variable>
     </events>
 </c2eventsheet>

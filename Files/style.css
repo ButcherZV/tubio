@@ -2,17 +2,27 @@
 {
 	padding: 0% 0.3%;
 	font-family: "Quicksand";
+	border: 2px solid #45A29E;
+	color: #C5C6C7;
+	background-color: #1F2833;
 }
 
 #buttons
 {
 	font-family: "Quicksand";
+	color: #C5C6C7;
+	border: 2px solid #45A29E;
+	background-color: #1F2833;
 }
 
 #log
 {
 	padding: 0.5% 0.5%;
 	font-family: "Quicksand";
+	color: #C5C6C7;
+	background-color: #1F2833;
+	border: 2px solid #45A29E;
+	scrollbar-color: #45A29E transparent;
 }
 
 .fill
