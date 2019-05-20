@@ -15,7 +15,7 @@
     <layers>
         <layer name="Background" sid="437253187950668">
             <initially-visible>1</initially-visible>
-            <background-color>255,255,255</background-color>
+            <background-color>11,12,16</background-color>
             <transparent>0</transparent>
             <parallax>
                 <x>1</x>
@@ -24,7 +24,7 @@
             <zoom-rate>1</zoom-rate>
             <opacity>1</opacity>
             <force-own-texture>0</force-own-texture>
-            <global>0</global>
+            <global>1</global>
             <use-render-cells>0</use-render-cells>
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
@@ -83,11 +83,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>44</x>
+                        <x>46</x>
                         <y>73</y>
                         <z>0</z>
-                        <width>1280</width>
-                        <height>720</height>
+                        <width>1268</width>
+                        <height>713</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -125,7 +125,7 @@
                         <text>QR CODE</text>
                         <tooltip></tooltip>
                         <initial-visibility>Visible</initial-visibility>
-                        <enabled>Yes</enabled>
+                        <enabled>No</enabled>
                         <auto-font-size>No</auto-font-size>
                         <id-optional>buttons</id-optional>
                         <checked>No</checked>
@@ -143,13 +143,13 @@
                         <hotspotY>0</hotspotY>
                     </world>
                 </instance>
-                <instance type="ytLink" uid="13">
+                <instance type="inputLink" uid="13">
                     <properties>
                         <text></text>
                         <placeholder>insert youtube link</placeholder>
                         <tooltip></tooltip>
                         <initial-visibility>Visible</initial-visibility>
-                        <enabled>Yes</enabled>
+                        <enabled>No</enabled>
                         <read-only>No</read-only>
                         <spell-check>No</spell-check>
                         <type>Text</type>
@@ -175,7 +175,7 @@
                         <text>SUBMIT</text>
                         <tooltip></tooltip>
                         <initial-visibility>Visible</initial-visibility>
-                        <enabled>Yes</enabled>
+                        <enabled>No</enabled>
                         <auto-font-size>No</auto-font-size>
                         <id-optional>buttons</id-optional>
                         <checked>No</checked>
@@ -193,7 +193,7 @@
                         <hotspotY>0</hotspotY>
                     </world>
                 </instance>
-                <instance type="Checkbox" uid="18">
+                <instance type="playIcons" uid="18">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-animation>Default</initial-animation>
@@ -265,7 +265,7 @@
                         <y>821</y>
                         <z>0</z>
                         <width>240</width>
-                        <height>200</height>
+                        <height>203</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
@@ -429,7 +429,7 @@
         </layer>
         <layer name="QR" sid="8722530541249526">
             <initially-visible>0</initially-visible>
-            <background-color>255,255,255</background-color>
+            <background-color>11,12,16</background-color>
             <transparent>0</transparent>
             <parallax>
                 <x>1</x>
@@ -463,7 +463,7 @@
                         <text></text>
                         <initial-visibility>Visible</initial-visibility>
                         <font>Arial,-106.4,400,0</font>
-                        <color>0,0,0</color>
+                        <color>197,198,199</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
                         <hotspot>Top-left</hotspot>
@@ -490,7 +490,7 @@
                         <text>Enter this code on your phone</text>
                         <initial-visibility>Visible</initial-visibility>
                         <font>Arial,-64,400,0</font>
-                        <color>0,0,0</color>
+                        <color>197,198,199</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
                         <hotspot>Top-left</hotspot>

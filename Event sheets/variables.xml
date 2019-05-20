@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>variables</name>
     <events>
+        <variable comment="Starting number of playlist" constant="0" name="start" sid="738711920793818" static="0" type="number">0</variable>
         <variable comment="Number of shared songs in this session" constant="0" name="sharedSongs" sid="595484245936316" static="0" type="number">0</variable>
         <variable comment="Order of a track in a playlist" constant="0" name="orderNo" sid="278215988953151" static="0" type="number">1</variable>
         <variable comment="Used for storing parameters between array shift" constant="0" name="buffer" sid="509730404480848" static="0" type="text"></variable>
