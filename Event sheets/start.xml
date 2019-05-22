@@ -2,5 +2,261 @@
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>start</name>
-    <events />
+    <events>
+        <variable constant="0" name="registerShowing" sid="261621896380173" static="0" type="number">0</variable>
+        <variable constant="0" name="loginShowing" sid="408281072261135" static="0" type="number">0</variable>
+        <variable constant="0" name="moveTime" sid="276122509159846" static="0" type="number">0.2</variable>
+        <variable constant="0" name="movement" sid="573314267690929" static="0" type="number">0</variable>
+        <event-block sid="813546116244167">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="136621197383186" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set web font" sid="444757173069609" type="TEXT">
+                    <param id="0" name="Family name">&quot;Quicksand&quot;</param>
+                    <param id="1" name="CSS URL">&quot;https://fonts.googleapis.com/css?family=Quicksand&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="628911125123594" type="version">
+                    <param id="0" name="Text">&quot;ver. &quot; &amp; projectversion</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="572645907342136">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="272269040344633" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="628600475570928">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="890547850024882" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="716183232238214" type="inputLogin">
+                            <param id="0" name="X">lerp(inputLogin.X,posLog.X,moveTime)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="265330501028705">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="686156674264819" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="430180290325981" type="inputRegister">
+                            <param id="0" name="X">lerp(inputRegister.X,posMid.X,moveTime)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="840170151478356" type="finishBtn">
+                            <param id="0" name="X">lerp(inputRegister.X,posMid.X,moveTime)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="725518486855078">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="607555489998439" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="109247238140280" type="inputRegister">
+                            <param id="0" name="X">lerp(inputRegister.X,posReg.X,moveTime)</param>
+                        </action>
+                        <action id="-1" name="Set X" sid="260844556372693" type="finishBtn">
+                            <param id="0" name="X">lerp(finishBtn.X,posMid.X,moveTime)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="664928759821453">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="226192439498801" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" sid="800508576387537" type="inputLogin">
+                            <param id="0" name="X">lerp(inputLogin.X,posMid.X,moveTime)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="357264284691655">
+            <conditions>
+                <condition id="0" name="On clicked" sid="467701510529721" type="signUpBtn" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="922176239371837">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="164661058466420" type="System">
+                            <param id="0" name="Variable">loginShowing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="285038650927167" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="234177189688531" type="System">
+                            <param id="0" name="Seconds">1.0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="696696265837825" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="492705215835463" type="System">
+                            <param id="0" name="Seconds">1.0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="212934913012591" type="System">
+                            <param id="0" name="Variable">loginShowing</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="755869273875362">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="271105001825526" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="661766007550807" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="595091832696600" type="System">
+                            <param id="0" name="Seconds">1.0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="942928450545912" type="System">
+                            <param id="0" name="Variable">registerShowing</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="919272732692682">
+                    <conditions />
+                    <actions>
+                        <action id="3" name="Set enabled" sid="228130847735692" type="loginBtn">
+                            <param id="0" name="Mode">0</param>
+                        </action>
+                        <action id="3" name="Set enabled" sid="774818136669919" type="signUpBtn">
+                            <param id="0" name="Mode">0</param>
+                        </action>
+                        <action id="8" name="Set unfocused" sid="318797148816658" type="signUpBtn" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="217259546503962">
+            <conditions>
+                <condition id="0" name="On clicked" sid="977681202153774" type="loginBtn" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="651355466528127">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="836227523928056" type="System">
+                            <param id="0" name="Variable">registerShowing</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="858240226247388" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Value">3</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="422680458167343" type="System">
+                            <param id="0" name="Seconds">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="797468003811781" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Value">4</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="307322914797818" type="System">
+                            <param id="0" name="Seconds">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="303578173860957" type="System">
+                            <param id="0" name="Variable">registerShowing</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="410807625381675">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="270663683767749" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="686906101676301" type="System">
+                            <param id="0" name="Variable">movement</param>
+                            <param id="1" name="Value">4</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="147511867530115" type="System">
+                            <param id="0" name="Seconds">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="593821954742567" type="System">
+                            <param id="0" name="Variable">loginShowing</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="884346779857677">
+                    <conditions />
+                    <actions>
+                        <action id="8" name="Set unfocused" sid="301031954211802" type="loginBtn" />
+                        <action id="-13" name="Set boolean" sid="323892264980061" type="loginBtn">
+                            <param id="0" name="Instance variable">pressed</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="540705608195564">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="146629960296251" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="976128159944281" type="resultText2">
+                    <param id="0" name="Text">&quot;SIGN UP: &quot; &amp; SignUpBtn.pressed &amp; &quot;;   LOGIN: &quot; &amp; loginBtn.pressed</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="560843027857529">
+            <conditions>
+                <condition id="1" name="On creating account successfully" sid="324234080739376" type="Authentication" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="467573831289041" type="resultText">
+                    <param id="0" name="Text">&quot;Account created! Redirecting to app...&quot;</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="890704236163717" type="System">
+                    <param id="0" name="Layout">MainScreen</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="746110957406109">
+            <conditions>
+                <condition id="0" name="On clicked" sid="290128170289850" type="finishBtn" />
+            </conditions>
+            <actions>
+                <action id="1" name="Create account" sid="673411748858086" type="Authentication">
+                    <param id="0" name="User name">inputRuser.Text</param>
+                    <param id="1" name="Password">inputRpass.Text</param>
+                    <param id="2" name="Email">inputRmail.Text</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
 </c2eventsheet>

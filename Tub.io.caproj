@@ -2,7 +2,7 @@
 <c2project>
     <name>Tub.io</name>
     <description>Playlist maker app</description>
-    <version>1.0.0.0</version>
+    <version>0.01</version>
     <author>djAPE</author>
     <author-email></author-email>
     <author-website>http://www.djape.tk</author-website>
@@ -27,6 +27,8 @@
         <plugin author="Scirra" id="NodeWebkit" version="1">NW.js</plugin>
         <plugin author="JP Deblonde" id="Pode_QRDecode" version="1">QRDecode</plugin>
         <plugin author="Rex.Rainbow" id="Rex_ListCtrl" version="0.100000001">List control</plugin>
+        <plugin author="Rex.Rainbow" id="Rex_Parse_Authentication" version="0.100000001">Authentication</plugin>
+        <plugin author="Rex.Rainbow" id="Rex_Parse_Initialize" version="0.100000001">Parse initialize</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
@@ -39,6 +41,7 @@
     <used-behaviors>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Rex.Rainbow" id="Rex_TouchArea2" version="0.100000001">Touch area</behavior>
+        <behavior author="lunarray" id="lunarray_LiteTween" version="1.700000048">LiteTween</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -50,6 +53,7 @@
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
+    <first-layout>StartScreen</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -60,7 +64,7 @@
         <prop name="Orientations">Landscape</prop>
         <prop name="Pause on unfocus">No</prop>
         <prop name="Physics engine">Box2D asm.js</prop>
-        <prop name="Preview browser">Custom</prop>
+        <prop name="Preview browser">Firefox</prop>
         <prop name="Sampling">Linear</prop>
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
@@ -95,14 +99,23 @@
             <object-type name="txtInfo" sid="834290666940623">
                 <plugin id="Text" />
             </object-type>
-            <object-type name="inputLink" sid="196916325940184">
-                <plugin id="TextBox" />
-            </object-type>
             <object-type name="statusLog" sid="767880930929307">
                 <plugin id="TextBox" />
             </object-type>
             <object-type name="clientList" sid="670930539887639">
                 <plugin id="List" />
+            </object-type>
+            <object-type name="branding" sid="972136768280384">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="version" sid="878974928761921">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="resultText" sid="634040205377435">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="resultText2" sid="425896342877361">
+                <plugin id="Text" />
             </object-type>
         </object-folder>
         <object-folder name="Plugins">
@@ -155,6 +168,12 @@
                         <behavior id="Rex_TouchArea2" />
                     </behavior-type>
                 </behaviors>
+            </object-type>
+            <object-type name="ParseInitialize" sid="232335230737037">
+                <plugin id="Rex_Parse_Initialize" />
+            </object-type>
+            <object-type global="1" name="Authentication" sid="220140723654638">
+                <plugin id="Rex_Parse_Authentication" />
             </object-type>
         </object-folder>
         <object-folder name="Graphics">
@@ -257,6 +276,49 @@
             <object-type name="submitBtn" sid="247152911443789">
                 <plugin id="Button" />
             </object-type>
+            <object-type name="finishBtn" sid="111506570052131">
+                <plugin id="Button" />
+                <behaviors>
+                    <behavior-type name="LiteTween" sid="408061645652571">
+                        <behavior id="lunarray_LiteTween" />
+                    </behavior-type>
+                </behaviors>
+            </object-type>
+            <object-type name="signUpBtn" sid="519987660433866">
+                <plugin id="Button" />
+                <instance-variables>
+                    <instance-variable name="pressed" sid="430185228701376" type="boolean" />
+                </instance-variables>
+            </object-type>
+            <object-type name="loginBtn" sid="866234913686343">
+                <plugin id="Button" />
+                <instance-variables>
+                    <instance-variable name="pressed" sid="367583240003058" type="boolean" />
+                </instance-variables>
+            </object-type>
+        </object-folder>
+        <object-folder name="Input">
+            <object-type name="inputRmail" sid="636382062065278">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputRpass" sid="304295030482799">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputPass" sid="123116541994423">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputRpassr" sid="233845692742052">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputRuser" sid="881825142875776">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputUser" sid="545488363198716">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputLink" sid="196916325940184">
+                <plugin id="TextBox" />
+            </object-type>
         </object-folder>
         <object-type name="backend" sid="377700514597759">
             <plugin id="Multiplayer" />
@@ -273,17 +335,70 @@
         <object-type name="NWjs" sid="202838886947706">
             <plugin id="NodeWebkit" />
         </object-type>
+        <object-type name="posReg" sid="338548570414423">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="937639747517672" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="posMid" sid="638310454775736">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="175797261077556" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="posLog" sid="381365838596704">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="636057159639928" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="TEXT" plugin-id="Text" sid="199798342689734">
             <members>
+                <member>branding</member>
                 <member>txtDebug</member>
                 <member>txtInfo</member>
                 <member>txtListItem</member>
                 <member>txtQRcode</member>
                 <member>txtResult</member>
                 <member>txtStats</member>
+                <member>version</member>
             </members>
+        </family>
+        <family name="inputRegister" plugin-id="TextBox" sid="554176303273643">
+            <members>
+                <member>inputLink</member>
+                <member>inputPass</member>
+                <member>inputRmail</member>
+                <member>inputRpass</member>
+                <member>inputRpassr</member>
+                <member>inputRuser</member>
+                <member>inputUser</member>
+            </members>
+            <behaviors>
+                <behavior-type name="LiteTween" sid="685089682574029">
+                    <behavior id="lunarray_LiteTween" />
+                </behavior-type>
+            </behaviors>
+        </family>
+        <family name="inputLogin" plugin-id="TextBox" sid="878323927895632">
+            <members>
+                <member>inputPass</member>
+                <member>inputUser</member>
+            </members>
+            <behaviors>
+                <behavior-type name="LiteTween2" sid="880578912042327">
+                    <behavior id="lunarray_LiteTween" />
+                </behavior-type>
+            </behaviors>
         </family>
     </families>
     <layout-folder>
@@ -310,6 +425,13 @@
         <global-instance type="Keyboard" uid="28" />
         <global-instance type="AJAX" uid="16" />
         <global-instance type="NWjs" uid="20" />
+        <global-instance type="ParseInitialize" uid="21">
+            <properties>
+                <application-id>HamhipSCPLBUKMzSEqSmitQqU5jalNLPhRlMEh9j</application-id>
+                <javascript-key>n3R8LVExvhKaNtZq44PSEfcOswxoMJ7st2hIeEol</javascript-key>
+                <server-url>https://parseapi.back4app.com</server-url>
+            </properties>
+        </global-instance>
     </global-instances>
     <sounds-folder />
     <music-folder />

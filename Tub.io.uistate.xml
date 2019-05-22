@@ -11,9 +11,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     </configurations>
     <open-tabs>
         <layout order="0">MainScreen</layout>
-        <layout active="1" order="3">StartScreen</layout>
+        <layout order="3">StartScreen</layout>
         <event-sheet order="1">main</event-sheet>
         <event-sheet order="2">variables</event-sheet>
+        <event-sheet active="1" order="4">start</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -21,23 +22,29 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="0" name="Window Size" />
         <property expanded="1" name="Configuration Settings" />
     </properties>
-    <families-expanded root="0">
+    <families-expanded root="1">
         <family expanded="0" name="TEXT" />
+        <family expanded="0" name="inputRegister" />
+        <family expanded="1" name="inputLogin" />
     </families-expanded>
     <folders-expanded>
-        <folder expanded="0" path="object-folder/" />
+        <folder expanded="1" path="object-folder/" />
         <folder expanded="0" path="object-folder/Text/" />
         <folder expanded="0" path="object-folder/Plugins/" />
         <folder expanded="0" path="object-folder/Graphics/" />
         <folder expanded="0" path="object-folder/Buttons/" />
+        <folder expanded="0" path="object-folder/Input/" />
         <folder expanded="1" path="layout-folder/" />
         <folder expanded="1" path="event-folder/" />
-        <folder expanded="0" path="file-folder/" />
+        <folder expanded="1" path="file-folder/" />
         <folder expanded="1" path="sound-folder/" />
         <folder expanded="1" path="music-folder/" />
         <folder expanded="0" path="file-folder/Icons/" />
         <folder expanded="1" path="animation-folder/playIcons/" />
         <folder expanded="1" path="animation-folder/LineBG/" />
         <folder expanded="1" path="animation-folder/TableBG/" />
+        <folder expanded="1" path="animation-folder/posReg/" />
+        <folder expanded="1" path="animation-folder/posMid/" />
+        <folder expanded="1" path="animation-folder/posLog/" />
     </folders-expanded>
 </c2uistate>
