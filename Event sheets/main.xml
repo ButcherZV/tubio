@@ -10,6 +10,10 @@
                         <condition id="-2" name="On start of layout" sid="716684668893007" type="System" />
                     </conditions>
                     <actions>
+                        <action id="-9" name="Set value" sid="718513299049564" type="System">
+                            <param id="0" name="Variable">nickname</param>
+                            <param id="1" name="Value">Authentication.UserName</param>
+                        </action>
                         <action id="1" name="Connect" sid="662440699216008" type="backend">
                             <param id="0" name="Server">&quot;wss://multiplayer.scirra.com&quot;</param>
                         </action>
@@ -164,7 +168,7 @@
                             <param id="0" name="Game">&quot;djAPE-Tubeio&quot;</param>
                             <param id="1" name="Instance">&quot;default&quot;</param>
                             <param id="2" name="Room">sessionID</param>
-                            <param id="3" name="Max peers">0</param>
+                            <param id="3" name="Max peers">maxUsers</param>
                         </action>
                         <action id="0" name="Set text" sid="572161089144865" type="statusLog">
                             <param id="0" name="Text">statusLog.Text &amp; &quot; completed!&quot; &amp; newline &amp;&quot;Joining session... &quot;</param>

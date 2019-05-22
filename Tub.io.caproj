@@ -29,6 +29,7 @@
         <plugin author="Rex.Rainbow" id="Rex_ListCtrl" version="0.100000001">List control</plugin>
         <plugin author="Rex.Rainbow" id="Rex_Parse_Authentication" version="0.100000001">Authentication</plugin>
         <plugin author="Rex.Rainbow" id="Rex_Parse_Initialize" version="0.100000001">Parse initialize</plugin>
+        <plugin author="Rex.Rainbow" id="Rex_parse_ItemTable" version="0.100000001">Item table</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
@@ -64,7 +65,7 @@
         <prop name="Orientations">Landscape</prop>
         <prop name="Pause on unfocus">No</prop>
         <prop name="Physics engine">Box2D asm.js</prop>
-        <prop name="Preview browser">Firefox</prop>
+        <prop name="Preview browser">NW.js</prop>
         <prop name="Sampling">Linear</prop>
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
@@ -296,27 +297,60 @@
                     <instance-variable name="pressed" sid="367583240003058" type="boolean" />
                 </instance-variables>
             </object-type>
+            <object-type name="signRecover" sid="635377234508543">
+                <plugin id="Button" />
+                <instance-variables>
+                    <instance-variable name="pressed" sid="688539546626409" type="boolean" />
+                </instance-variables>
+            </object-type>
         </object-folder>
         <object-folder name="Input">
             <object-type name="inputRmail" sid="636382062065278">
                 <plugin id="TextBox" />
+                <container>
+                    <type>inputRuser</type>
+                    <type>inputRmail</type>
+                    <type>inputRpass</type>
+                    <type>inputRpassr</type>
+                </container>
             </object-type>
             <object-type name="inputRpass" sid="304295030482799">
                 <plugin id="TextBox" />
+                <container>
+                    <type>inputRuser</type>
+                    <type>inputRmail</type>
+                    <type>inputRpass</type>
+                    <type>inputRpassr</type>
+                </container>
             </object-type>
             <object-type name="inputPass" sid="123116541994423">
                 <plugin id="TextBox" />
             </object-type>
             <object-type name="inputRpassr" sid="233845692742052">
                 <plugin id="TextBox" />
+                <container>
+                    <type>inputRuser</type>
+                    <type>inputRmail</type>
+                    <type>inputRpass</type>
+                    <type>inputRpassr</type>
+                </container>
             </object-type>
             <object-type name="inputRuser" sid="881825142875776">
                 <plugin id="TextBox" />
+                <container>
+                    <type>inputRuser</type>
+                    <type>inputRmail</type>
+                    <type>inputRpass</type>
+                    <type>inputRpassr</type>
+                </container>
             </object-type>
             <object-type name="inputUser" sid="545488363198716">
                 <plugin id="TextBox" />
             </object-type>
             <object-type name="inputLink" sid="196916325940184">
+                <plugin id="TextBox" />
+            </object-type>
+            <object-type name="inputLostEmail" sid="121867911954103">
                 <plugin id="TextBox" />
             </object-type>
         </object-folder>
@@ -359,11 +393,15 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type global="1" name="ItemTable" sid="825837795173642">
+            <plugin id="Rex_parse_ItemTable" />
+        </object-type>
     </object-folder>
     <families>
         <family name="TEXT" plugin-id="Text" sid="199798342689734">
             <members>
                 <member>branding</member>
+                <member>resultText</member>
                 <member>txtDebug</member>
                 <member>txtInfo</member>
                 <member>txtListItem</member>
@@ -375,13 +413,10 @@
         </family>
         <family name="inputRegister" plugin-id="TextBox" sid="554176303273643">
             <members>
-                <member>inputLink</member>
-                <member>inputPass</member>
                 <member>inputRmail</member>
                 <member>inputRpass</member>
                 <member>inputRpassr</member>
                 <member>inputRuser</member>
-                <member>inputUser</member>
             </members>
             <behaviors>
                 <behavior-type name="LiteTween" sid="685089682574029">

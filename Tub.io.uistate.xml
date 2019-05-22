@@ -12,9 +12,9 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <open-tabs>
         <layout order="0">MainScreen</layout>
         <layout order="3">StartScreen</layout>
-        <event-sheet order="1">main</event-sheet>
+        <event-sheet active="1" order="1">main</event-sheet>
         <event-sheet order="2">variables</event-sheet>
-        <event-sheet active="1" order="4">start</event-sheet>
+        <event-sheet order="4">start</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -24,7 +24,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     </properties>
     <families-expanded root="1">
         <family expanded="0" name="TEXT" />
-        <family expanded="0" name="inputRegister" />
+        <family expanded="1" name="inputRegister" />
         <family expanded="1" name="inputLogin" />
     </families-expanded>
     <folders-expanded>
